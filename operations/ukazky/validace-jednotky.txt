@@ -1,0 +1,18 @@
+Snímek k 9. 8. 2026, pořízený nad tímhle balíčkem. Negeneruje se automaticky.
+Příkaz: bash scaffold/validate.sh ukazka-jednotky
+Reprodukce: spusť týž příkaz z kořene balíčku, výstup musí sedět.
+
+Validace: ukazka-jednotky
+Režim:    studio
+
+PASS  (a) CLAUDE.md existuje; pole Klasifikace nalezeno v: CLAUDE.md
+PASS  (b) OR-03 header obsahuje všech 7 polí
+PASS  (c) OR-10 - header bez řetězení historie
+PASS  (h) OR-03 pole Slouží: "Dark Factory" je z uzavřeného oboru
+PASS  (d) OR-06 team-outcomes/ číslování bez duplicit
+PASS  (e) AR-12 identita agentů - žádné agent soubory
+PASS  (f) AR-12 overlay pointer - žádné agent soubory
+PASS  (g) AR-12 frontmatter / integrita artefaktu - žádné agent soubory
+
+Souhrn: 8 PASS, 0 FAIL, 0 WARN, 0 n/a
+Výsledek: OK - scaffold integrita v pořádku.

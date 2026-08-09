@@ -1,0 +1,50 @@
+Snímek k 9. 8. 2026, pořízený nad tímhle balíčkem. Negeneruje se automaticky.
+Příkaz: bash scaffold/validate.sh --baseline ukazka-jednotky
+
+Pořízeno na stroji, kde `~/.claude` existuje, ale nemá naši platformní knihovnu -
+tedy tak, jak to uvidíš ty. Ověřovací testy lístků se ptají na soubory v té knihovně;
+u tebe tam nejsou, takže hlásí FAIL. Není to vada balíčku ani chyba měření: brána je
+fail-closed a co neprojde, se nehlásí jako v pořádku. Na stroji, kde knihovna je,
+tytéž řádky vracejí PASS.
+
+Třetí hodnotu NEZJISTENO uvidíš tam, kde nástroj neumí ani rozhodnout, jestli má nad
+čím měřit - třeba když adresář knihovny vůbec neexistuje. Vyzkoušet jde jedním řádkem:
+
+  HOME=$(mktemp -d) bash scaffold/validate.sh --baseline ukazka-jednotky --line
+  -> BASELINE ... stav=nezjisteno lag=5 regrese=0 nezjisteno=4 blokujici=0 vadne=0
+
+Rozdíl mezi FAIL a NEZJISTENO je celý smysl té třetí hodnoty: první znamená "změřeno
+a neprošlo", druhá "nešlo změřit". Ani jedno není PASS a ani jedno se za PASS
+nepovažuje při počítání stavu.
+
+BASELINE jednotka=ukazka-jednotky stav=pozadu lag=5 regrese=0 nezjisteno=0 blokujici=0 vadne=0 platforma=2.14.0 platforma_meta=2.14.0 profil=runtime-pull,sablona
+
+Jednotka:  ukazka-jednotky
+Baseline:  ukazka-jednotky/operations/platform-baseline.md
+Profil:    runtime-pull sablona
+Platforma: 2.14.0 v baseline, 2.14.0 v METĚ
+Changesety v METĚ: 13 celkem, 13 se týká jednotky, 0 mimo rozsah, 8 mimo profil
+
+Fronta nepřevzatých (5):
+  2026-08-03-hire-humble-komensky (osa A, dosah: runtime-pull, dokumentace, běžná)
+    V týmu jsou dva noví lidé: Humble hlídá verze a to, aby změna doputovala k uživateli a šla vrátit, Komenský píše dokumentaci a texty, které čte klient. Role pro marketingový text píše marketing dál, texty uvnitř produktu už ne.
+    Akce: žádná; noví agenti se načtou při příští session, na stroji NSL stačí `git pull` v `~/.claude`
+    Testy: 0 PASS, 4 FAIL, 0 nezjištěno, 1 mimo profil
+  2026-08-03-zaveden-mechanismus-propagace (osa A, dosah: sablona, dokumentace, běžná)
+    Od dneška se u každé změny platformy píše lístek s tím, koho se týká a co s tím má udělat, a každá jednotka si eviduje, které lístky už převzala. Odpověď na „na jaké verzi běžím a co mi uteklo" je nově jedno číslo, ne pátrání.
+    Akce: založ ve své jednotce `operations/platform-baseline.md` podle šablony v `operations/changesets/README.md` (sekce Baseline jednotky) a zapiš do něj tenhle changeset jako převzatý
+    Testy: 2 PASS, 0 FAIL, 0 nezjištěno, 1 mimo profil
+  2026-08-07-aging-gate-planovace (osa A, dosah: runtime-pull, běžná)
+    Denní i týdenní plánovač teď starou položku nepovažuje za urgentní jen proto, že je stará, a zeptá se, jestli ještě platí.
+    Akce: Žádná. Skilly jsou osobní vrstva Stanislava, jednotky je nekonzumují.
+    Testy: 0 PASS, 2 FAIL, 0 nezjištěno, 0 mimo profil
+  2026-08-07-panos-foundation-smycka (osa A, dosah: runtime-pull, běžná)
+    Panoš přestal do každé nové definice psát cestu k Foundation, která neexistuje, takže se ta chyba dál nerozsévá.
+    Akce: Žádná. Změna se projeví u definic psaných od teď.
+    Testy: 0 PASS, 3 FAIL, 0 nezjištěno, 0 mimo profil
+  2026-08-08-docasna-omezeni-ttl-or10 (osa A, dosah: runtime-pull, běžná)
+    Když někdy něco dočasně omezíme, třeba když dojde týdenní limit modelu, tak se to nově zapíše s konkrétním datem na jedno místo podle toho, koho se to týká, a po tom datu to samo přestane platit. Do paměti agentů to nepatří, protože právě odtud se dvě taková omezení sedm týdnů nikdo neodstranil, přestože u nich stálo, kdy mají skončit.
+    Akce: Žádná při převzetí. Uplatní se, až bude v jednotce potřeba zavést dočasné omezení - pak platí nový kanál a formát položky.
+    Testy: 0 PASS, 4 FAIL, 0 nezjištěno, 0 mimo profil
+
+Převzetí se zapisuje: scaffold/validate.sh --baseline ukazka-jednotky --accept <ID> --kdo "<jméno>"

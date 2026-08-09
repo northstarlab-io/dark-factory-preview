@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+#
+# pre-commit - brána platformy před commitem v METĚ
+#
+# Jedna odpovědnost: spustit validate-platform.sh a vrátit jeho návratový kód.
+# Žádná vlastní logika, žádný zápis, žádná síť (brána G2, posudek Ariadne 041 sekce 5.1).
+#
+# Hook je VERZOVANÝ soubor. Aktivuje se jednorázově přes scaffold/install-hooks.sh,
+# které nastaví core.hooksPath - obsah hooku je pak normální diff a jeho změna nese
+# changeset jako každý engine soubor. Netrackovaný soubor v .git/hooks by se spouštěl
+# při každém commitu, nešel by diffnout a o jeho degradaci by se nikdo nedozvěděl.
+#
+# Únik: git commit --no-verify. Obejití není tiché - kontrola (8a) chytne commit bez
+# pokrytí zpětně při příštím běhu brány.
+#
+# POZNÁMKA K VYDĚLENÉMU BALÍČKU: install-hooks.sh tady schválně není, takže se tenhle
+# hook sám neaktivuje a chybová hláška níž ukazuje na skript, který v balíčku nenajdeš.
+# Je to ke čtení, ne k zapnutí; důvod je v docs/hranice-baliku.md.
+#
+# Přepínač --hook říká validátoru, že má posuzovat PLOCHU COMMITU, ne pracovní strom
+# (viz úvod validátoru a scaffold/lib/git-prostredi.sh). Bez něj brána padala na cizí
+# rozdělané práci: 6. 8. 2026 zablokovala dva nezávislé commity, kterých se rozpracovaný
+# soubor vůbec netýkal. Zděděné prostředí gitu se nezahazuje - GIT_INDEX_FILE JE ta
+# plocha; validátor si sám hlídá, aby s ním nešel do cizího repa.
+
+set -u
+
+VALIDATOR="scaffold/validate-platform.sh"
+
+# Vykonej jen to, co je v gitu (brána G3). Bez tohohle by umístění souboru do pracovního
+# stromu stačilo k tomu, aby se při příštím commitu spustil shell kód z toho stromu.
+if ! git ls-files --error-unmatch "$VALIDATOR" >/dev/null 2>&1; then
+  printf 'BRÁNA: %s není verzovaný v gitu - nespouštím ho.\n' "$VALIDATOR" >&2
+  printf 'Commit zastaven. Buď soubor commitni, nebo hook odinstaluj: bash scaffold/install-hooks.sh --uninstall\n' >&2
+  exit 1
+fi
+
+bash "$VALIDATOR" --hook
+RC=$?
+
+if [ "$RC" -ne 0 ]; then
+  printf '\nBRÁNA: commit zastaven kvůli FAIL výše.\n' >&2
+  printf 'Náprava, nebo vědomé obejití: git commit --no-verify (obejití chytne kontrola 8a zpětně).\n' >&2
+fi
+exit "$RC"

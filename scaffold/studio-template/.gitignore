@@ -1,0 +1,31 @@
+# Secrets - nikdy do gitu (per OR-02)
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+secrets/
+credentials.json
+
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+
+# Dependencies / build
+node_modules/
+dist/
+build/
+__pycache__/
+*.pyc
+
+# Delivery/product řez (AR-11 doplněk v2)
+# Když zakázka žije ve dvou repozitářích - delivery projekt (team-inbox/, team-outcomes/,
+# operations/) vs. product repo předávané klientovi - hranici drží .gitignore: v product repu
+# klienta nikdy nekončí NSL delivery evidence. Odkomentuj níže jen v product repu, ne v delivery.
+# Detail patternu: docs/architektura-vrstev.md (AR-11).
+# team-inbox/
+# team-outcomes/
+# operations/

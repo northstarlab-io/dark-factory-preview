@@ -1,0 +1,55 @@
+{
+  "_comment": "Engine/state seam scaffoldovaných projektů (v2). Sekce engine/state = studio (studio-template), sekce engine_tenant/state_tenant = tenant harness (tenant-template). Řídí, co upgrade platform library smí přepsat (engine) a čeho se nikdy nedotkne (state). Viz AR-05 v6 a scaffold/VERSION.",
+  "_comment_version": "Číslo drží scaffold/VERSION (jediný zdroj pravdy). Tady je podruhé jen proto, že statický JSON jiný soubor přečíst neumí - shodu hlídá kontrola (10) ve validate-platform.sh, bump jde oběma místy naráz a vždy s changesetem.",
+  "scaffold_version": "2.14.0",
+  "_comment_zdroj": "Cesty jsou relativní ke kořeni JEDNOTKY. Zdroj kopie je táž relativní cesta v odpovídající šabloně (engine -> scaffold/studio-template, engine_tenant -> scaffold/tenant-template). Mapování zdroj->cíl neexistuje a existovat nemá: tenhle soubor klasifikuje cesty jednotky, není to kopírovací skript. Kdo potřebuje jiný cíl, přesune soubor v šabloně. Paritu obou směrů (deklarace bez souboru, soubor bez deklarace) hlídá kontrola (9b) ve validate-platform.sh.",
+  "_comment_verze_jednotky": "VERSION ani manifest.json v kořeni jednotky do žádného engine seznamu NEPATŘÍ a nepřidávat je zpět (vyřazeno ve scaffold 2.3.0). Tři důvody: v šablonách ty soubory nikdy nebyly (mrtvá deklarace), verzi jednotky drží operations/platform-baseline.md a druhá kopie čísla v jednotce prokazatelně driftuje (tři jednotky uvízlé na 2.0.0), a v repu kokpitu znamená VERSION vydání software kokpitu (osa B, 1.x) - upgrade řízený tímhle seznamem by klientovi přepsal číslo vydání verzí platformy.",
+  "_comment_engine": "Šablonové soubory platformy (studio). Upgrade scaffoldu je smí přepsat - needituj je ručně, změny se při dalším upgradu ztratí. Položka je vždy konkrétní soubor, nikdy glob ani adresář.",
+  "engine": [
+    "operations/00-README.md",
+    "operations/00-normy.md",
+    "operations/runbooks/kb-staleness-sweep.md",
+    "operations/runbooks/content-kalibrace.md",
+    "operations/runbooks/vymaz-osobnich-udaju.md",
+    "team-inbox/README.md",
+    "team-outcomes/README.md",
+    ".claude/agents/README.md"
+  ],
+  "_comment_state": "Uživatelská data studio jednotky. Upgrade se jich NIKDY nedotkne. Konkrétní engine soubor uvnitř state adresáře (např. team-inbox/README.md) má přednost před glob state cestou team-inbox/*.",
+  "state": [
+    "CLAUDE.md",
+    ".gitignore",
+    "operations/status.md",
+    "operations/backlog.md",
+    "operations/platform-baseline.md",
+    "operations/decisions/",
+    "operations/handoffs/",
+    "operations/retrospectives/",
+    "team-inbox/*",
+    "team-outcomes/*",
+    "team-outcomes/archive/",
+    ".claude/agents/*.md"
+  ],
+  "_comment_engine_tenant": "Šablonové soubory platformy (tenant harness). Upgrade je smí přepsat.",
+  "engine_tenant": [
+    "operations/00-normy.md",
+    "team-inbox/README.md",
+    "escalations/README.md",
+    ".claude/agents/README.md"
+  ],
+  "_comment_state_tenant": "Tenantní data. Upgrade se jich NIKDY nedotkne. CLAUDE.md tenanta je state na úrovni souboru; jeho engine sekce (Provozní normy, Hranice - zadat, nebo udělat sám, Read/write hranice, Session startup checklist) se upgradují řízeně per scaffold/MIGRATION.md, ne slepým přepisem souboru.",
+  "state_tenant": [
+    "CLAUDE.md",
+    "portfolio-status.md",
+    "operations/status.md",
+    "operations/platform-baseline.md",
+    "operations/handoffs/",
+    "team-inbox/*",
+    "escalations/*",
+    "journals/",
+    "quarterly-reviews/",
+    ".claude/agents/*.md"
+  ],
+  "_comment_policy": "Fail-closed default: nezařazená cesta se nedotýká a flagne se k ručnímu rozhodnutí.",
+  "policy": "fail-closed - cesta neuvedená ani v engine ani v state se při upgradu NEDOTÝKÁ a flagne se"
+}

@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+#
+# commit-msg - trailer "Changeset:" u commitu s dosahem mimo METU
+#
+# Proč vedle pre-commit hooku ještě tenhle: pre-commit běží DŘÍV, než zpráva commitu
+# existuje, takže chybějící trailer neumí vidět. Přesně tímhle způsobem prošel commit
+# 528cf68 z 5. 8. 2026 - sáhl na konfigurační soubor tenanta, nenesl trailer,
+# a brána (8a) to zjistila až zpětně, kdy se s tím nedá nic udělat bez přepisu historie.
+# Tenhle hook tu díru zavírá v okamžiku, kdy je oprava ještě levná.
+#
+# Jedna odpovědnost: posoudit staged cesty proti hlídanému vzoru a zprávu proti trailer
+# tvaru. Platnost samotného changesetu neověřuje - to dělá (8a) ve validate-platform.sh
+# a duplikovat to sem by znamenalo dvě verze téhož pravidla.
+
+set -u
+
+MSG_FILE="${1:-}"
+[ -n "$MSG_FILE" ] || exit 0
+VALIDATOR="scaffold/validate-platform.sh"
+
+# Hlídaný vzor má jeden domov - definici ve validátoru. Opsat ho sem by znamenalo,
+# že se obě kopie rozejdou (OR-10). Když ho nejde přečíst, hook zastaví: neumět
+# posoudit dosah není totéž co "dosah není".
+WATCH="$(sed -n "s/^WATCH_META='\(.*\)'\$/\1/p" "$VALIDATOR" 2>/dev/null | head -1)"
+if [ -z "$WATCH" ]; then
+  printf 'BRÁNA: ve %s nejde přečíst WATCH_META, dosah commitu neumím posoudit.\n' "$VALIDATOR" >&2
+  printf 'Commit zastaven (fail-closed). Obejití: git commit --no-verify\n' >&2
+  exit 1
+fi
+
+STAGED="$(git diff --cached --name-only 2>/dev/null)"
+printf '%s\n' "$STAGED" | grep -Eq "$WATCH" || exit 0
+
+# Pokrytí souborem changesetu ve stejném commitu - stejné pravidlo jako v (8a) pro METU.
+printf '%s\n' "$STAGED" | grep -Eq '^operations/changesets/[^/]+\.md$' && exit 0
+
+TRAILER="$(sed -n 's/^Changeset:[[:space:]]*//p' "$MSG_FILE" | tail -1 | sed 's/[[:space:]]*$//')"
+case "$TRAILER" in
+  '')
+    printf 'BRÁNA: commit sahá na hlídané cesty (dosah mimo METU), ale zpráva nenese trailer.\n' >&2
+    printf 'Doplň jeden z řádků na konec zprávy:\n' >&2
+    printf '  Changeset: <ID changesetu>\n' >&2
+    printf '  Changeset: none (<důvod, proč se nic nepropaguje>)\n' >&2
+    printf 'Obejití: git commit --no-verify (chytne zpětně kontrola 8a).\n' >&2
+    exit 1 ;;
+  "none ("*")")
+    REASON="${TRAILER#none (}"; REASON="${REASON%)}"
+    if [ -z "$(printf '%s' "$REASON" | tr -d '[:space:]')" ]; then
+      printf 'BRÁNA: "Changeset: none ()" s prázdným důvodem. Důvod je povinný - evidovaná výjimka, ne tichá.\n' >&2
+      exit 1
+    fi
+    exit 0 ;;
+  none*)
+    printf 'BRÁNA: trailer "Changeset: %s" není ve tvaru "none (<důvod>)".\n' "$TRAILER" >&2
+    exit 1 ;;
+  *) exit 0 ;;
+esac

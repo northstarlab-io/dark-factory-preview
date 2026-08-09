@@ -1,0 +1,45 @@
+# OS
+.DS_Store
+Thumbs.db
+*.swp
+*~
+
+# Editor
+.vscode/
+.idea/
+*.iml
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Node
+node_modules/
+npm-debug.log
+
+# Secrets per OR-02 (Secrets handling discipline)
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+*.cert
+secrets/
+credentials/
+*-credentials.json
+*-secret.json
+
+# MCP / Claude config (může obsahovat tokeny)
+.claude.json
+.claude/settings.local.json
+
+# Build artefakty
+build/
+dist/
+*.log
+
+# Backup files
+*.bak
+*.orig

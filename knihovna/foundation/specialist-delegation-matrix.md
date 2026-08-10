@@ -4,7 +4,7 @@
 >
 > **Reference:** definice obou orchestrátorů tenhle princip dědí přes železné pravidlo a pointer. Canonical text, Why a výjimky tady.
 >
-> **Rozsah tabulky v tomhle balíčku:** řádky odpovídají definicím, které jsou v `knihovna/agents/`. Je to výběr definic, ne celý stack, a tabulka je tomu výběru přizpůsobená.
+> **Rozsah tabulky:** řádek vzniká při zařazení role nebo při změně jejího rozsahu, ne dopředu, takže tabulka nepokrývá každou definici v `knihovna/agents/`. Je to seznam signálů, u kterých se v provozu ukázalo, že orchestrátor sahá po vlastní ruce místo po specialistovi. Údržba je popsaná dole.
 
 ## Princip (OR-04: Specialist Delegation Primacy)
 
@@ -21,14 +21,27 @@ Když úkol leží v doméně specializovaného agenta (per mapping tabulka ní�
 
 | Signal / aktivita / tooling | Default specialist | Self-execute výjimka |
 |---|---|---|
+| Operace ve znalostní bázi přes konektor (vyhledání, čtení, zakládání a úprava stránek, přesuny, databáze, views, komentáře) | **Tiago** | (b) sub-2-min vyhledání na známé ID stránky |
+| Návrh obsahu ve znalostní bázi (hierarchie stránek, schéma databází, views, dashboard) | **Tiago** | žádná |
+| PARA / PPV refactor, hierarchie složek, konvence pojmenování, cross-platform IA (Notion + GDrive + OneDrive + Obsidian + souborový systém) | **Tiago** | žádná |
+| Předávací manuál, dokument s rozhodovacími pravidly, audience-aware tooling routing | **Tiago** | žádná |
+| Taxonomy design, ontologie, metadata schema, volba klasifikačního paradigmatu (hierarchické / faceted / graph / vector / hybrid) | **Diderot** | žádná |
+| Content lifecycle policy, DB paradigm advisory (relational / document / graph / vector / time-series / multi-model) | **Diderot** | žádná |
+| Denní provoz znalostní báze, umístění nového obsahu, indexace / odkazy / shrnutí, linting + health check, cykly obnovy | **Brooks** | žádná |
+| OR-02 detekce přístupových údajů + předání k řešení | **Brooks** (detekce) → **Ariadne** (řešení) | (b) flag bez řešení |
+| Externí research, kurace zdrojů (weby / podcasty / YouTube / papers / RSS / X), OSINT, rozlišení signálu od šumu | **Bellingcat** | (b) sub-2-min vyhledání konkrétního faktu |
+| Industry intelligence briefing, multi-tool research s verifikační hloubkou (křížová kontrola napříč modely) | **Bellingcat** | žádná |
 | Tech stack revize, multi-system integrace, workflow automation (n8n / Zapier / Make / Apify / MCP), data pipelines | **Ariadne** | žádná |
 | AI platform selection, AI client routing, DB vendor selection + deployment, MCP server building | **Ariadne** | žádná |
 | Secrets management, threat modeling, AI security awareness (7 modern threats), MCP supply chain | **Ariadne** | žádná |
+| Design série workshopů, kalibrace zralosti v AI, obecné facilitační patterny (Liberating Structures, Design Thinking) | **Lasso** | žádná |
+| Workshopové materiály (slidy / worksheety / kalibrační dotazníky), retro analýza, stakeholder mapping pro adopci | **Lasso** | žádná |
 | Research lidských kompetencí pro hire (kompetenční mapa top performerů, dovednosti / návyky / mentální modely) | **Sherlock** | žádná |
 | Agent persona creation, agent definition file (`.claude/agents/*.md`), identity + scope + tools + system prompt | **Panoš** | žádná |
 | PM delivery flow setup / kalibrace, Cynefin diagnostika, WIP audit, blocker triage, prioritizace backlogu (WSJF / ICE / MoSCoW), týdenní plán, status one-pager | **Taiichi** | žádná |
 | Deliverable-first WBS dekompozice work package s dictionary, akceptační kritéria psaná předem (Given-When-Then / checklist), odhady (3-point, reference class forecasting, Cone of Uncertainty), buffer disciplína, risk log, critical chain mapa | **Taiichi** | žádná |
 | Klientský update draft ve Stanislavově hlase (ghostwriter mode, fakta + interpretace + ask) | **Taiichi** | žádná - Taiichi drafuje, Stanislav podepisuje a posílá; vlastní klientský kontakt agenta je tvrdý stop |
+| Strategická rozhodnutí (PtW cascade, Wardley, Seven Powers, Cynefin, Opportunity Solution Tree) - **vždy v tandemu** | **rezac + roger-m** | žádná - tandem nelze zkrátit |
 | Politika verzování proti kontraktu kompatibility, zpětně kompatibilní změny + migrace typu rozšiř-zúž, cesta upgradu a návrat zpět, volba distribučního kanálu (klon / vendorovaná kopie / submodule / subtree) | **Humble** | žádná |
 | Changeset mechanika + konvence commitů + CHANGELOG, vydávání (VERSION, tag, GitHub Release), protokol kontroly aktualizací, propagace platformních změn do tenantů (baseline, fronta, fail-closed brána, detekce driftu), hranice artefaktu platforma vs. instance, míra CI/CD | **Humble** | (b) sub-2-min přečtení `VERSION` / stavu baseline; NIKDY ne návrh mechaniky |
 | Instalační návody, uživatelské a technické manuály, provozní runbooky u klienta, zákaznické poznámky k vydání, texty stavů a chybových hlášek uvnitř produktu, glosář produktu, očista dokumentace od klientských specifik | **Komenský** | žádná |
@@ -36,6 +49,8 @@ Když úkol leží v doméně specializovaného agenta (per mapping tabulka ní�
 | Rozhodnutí „má tohle být skill, subagent, hook, pravidlo, plugin, nebo řádek v CLAUDE.md", návrh a specifikace skillu (frontmatter, progresivní odkrývání, evaly), MCP vs. skill vs. skript vs. přímé API, inflace nástrojů | **Karpathy** | žádná |
 | Audit ekosystému a prořezávání (kolik skillů / agentů / MCP serverů, co spolkl startovní kontext, co je mrtvé), účetnictví kontextu, diagnóza „agent zapomněl pravidlo" / „instrukce se nenačetla", hygiena paměti a session (limity MEMORY.md, kdy `/clear` vs. cílený `/compact`) | **Karpathy** | (b) sub-2-min přečtení jednoho `SKILL.md`; NIKDY ne audit ani návrh zásahu |
 | Kalibrace alokační tabulky model a effort nad daty provisioning logu (OR-07 v3), regresní brána nad instrukčními artefakty, revize existujících promptů a definic proti chování aktuální generace modelů, doporučení co renderovat do tenanta a jakou tool policy | **Karpathy** | (c) routing konkrétního spawnu je orchestrátorův - Karpathy vlastní tabulku, ne jednotlivé rozhodnutí |
+| Brand voice design pro **cizí nebo klientskou** značku - claimy a nosné věty v cizím registru, voice charta, `BRAND_VOICE.md` do system promptu generujícího agenta, do/don't banka, red-flag filtry, hodnotící rubrika, kadenční pravidlo, destilace verdiktů do pravidel pro stroj | **Cyrano** | žádná |
+| Copy v **NSL hlasu** pod značkou nebo jménem Stanislava (web, landing pages, marketing, social, osobní komunikace) | **Bohuš** | žádná - hranice vůči Cyranovi: NSL hlas = Bohuš, cizí nebo klientský brand hlas = Cyrano (sdílené meta-řemeslo, ne registr) |
 
 **Poznámka k rolím produkujícím text pro lidské publikum:** jsou pod bránou **OR-11** - výstup otevírají řádkou `Naloženo:` se čtyřmi jmenovanými zdroji, bez nich negenerují. Orchestrátor v zadání navíc pojmenuje **collaboration level 0-5** (delegation-time routing volba, rodina OR-07). Komenský je pod OR-11 v zúžené podobě (celé dokumenty a poznámky k vydání ano, drobné edity ne), Humble pod ní není. Kanonický katalog té metodiky je mimo tenhle balíček.
 

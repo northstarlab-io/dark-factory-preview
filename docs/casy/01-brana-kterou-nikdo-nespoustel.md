@@ -61,7 +61,7 @@ Každý changeset nese blok s ověřovacími testy. Třikrát ve třech dnech vz
 nemohl projít nikdy: nezaescapované závorky ve vzoru (7. 8.), sloveso, které jazyk nezná
 (8. 8.), a hledaná formulace, kterou mezitím přejmenovala jiná změna (9. 8.). Jazyk je
 fail-closed, takže nic tiše neprošlo jako splněné. Autor se to ale dozvěděl až ve chvíli,
-kdy někdo test pustil proti reálné jednotce, a ve třetím případě to dvě jednotky držely ve
+kdy někdo test pustil proti reálné jednotce, a ve třetím případě to část jednotek drželo ve
 falešném stavu regrese, přestože knihovna byla v pořádku.
 
 Devátého srpna se kontrola posunula do okamžiku commitu: tvar každého řádku se ověřuje

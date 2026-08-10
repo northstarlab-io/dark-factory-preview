@@ -79,7 +79,7 @@ Každá vrstva má jeden motor, jednu akci konzumenta a jedno místo, kde se ov�
 
 Zdroj kopie u vrstvy `sablona` se nikde nemapuje: **cesta v šabloně je táž jako cesta v jednotce** (`engine` má zdroj v `scaffold/studio-template/`, `engine_tenant` v `scaffold/tenant-template/`). Manifest klasifikuje cesty jednotky, není to kopírovací skript - kdo potřebuje jiný cíl, přesune soubor v šabloně. Obě strany hlídá kontrola (9b) ve `validate-platform.sh`: engine cesta bez souboru v šabloně i soubor v šabloně bez zařazení jsou FAIL.
 
-**Vrstva `dokumentace` se od 6. 8. 2026 opravdu vyhodnocuje.** Do té doby ji `cs_unit_profile()` nedala do profilu žádné jednotce, takže se každý dokumentační řádek vyhodnotil jako mimo profil - vrstvu neslo 9 z 19 changesetů a ani jeden její test se nikdy nespustil. Deklarace bez vynucení je horší než žádná: tvrdí kontrolu, kterou nikdo neprovádí. Nově je `dokumentace` v profilu jednotky, která má adresář `operations/changesets/`, tedy u výrobce (dnes META). Signál je vlastnost jednotky, ne stroje - stejná past jako u `runtime-pull` ve scaffold 2.1.0. Pro jednotky bez toho adresáře se nemění nic a jejich fronty zůstávají beze změny (ověřeno na třech jednotkách před změnou i po ní).
+**Vrstva `dokumentace` se od 6. 8. 2026 opravdu vyhodnocuje.** Do té doby ji `cs_unit_profile()` nedala do profilu žádné jednotce, takže se každý dokumentační řádek vyhodnotil jako mimo profil - vrstvu neslo 9 z 19 changesetů a ani jeden její test se nikdy nespustil. Deklarace bez vynucení je horší než žádná: tvrdí kontrolu, kterou nikdo neprovádí. Nově je `dokumentace` v profilu jednotky, která má adresář `operations/changesets/`, tedy u výrobce (dnes META). Signál je vlastnost jednotky, ne stroje - stejná past jako u `runtime-pull` ve scaffold 2.1.0. Pro jednotky bez toho adresáře se nemění nic a jejich fronty zůstávají beze změny (ověřeno na nich před změnou i po ní).
 
 Praktický důsledek pro autora: řádek `dokumentace no_test` je pořád legitimní, ale teď má smysl psát skutečný test (`grep <soubor v METĚ> <vzor>`). A pozor na uzavřený jazyk - vzor se vyhodnocuje jako rozšířený regulární výraz, takže závorky v textu je nutné escapovat. Prvním nálezem po zapnutí byl přesně takový řádek, který nemohl projít nikdy.
 
@@ -135,7 +135,7 @@ Jiné sloveso než z téhle tabulky se vyhodnotí jako `NEZJISTENO`, ne jako chy
 |---|---|---|
 | 7. 8. 2026 | nezaescapované závorky ve vzoru | regulární výraz nesplnitelný z konstrukce, test nemohl projít nikdy |
 | 8. 8. 2026 | sloveso `meta_grep`, které jazyk nezná | nic tiše neprošlo, ale changeset nešel přijmout |
-| 9. 8. 2026 | `lib_grep` hledal formulaci, kterou pozdější změna přejmenovala | dvě jednotky hlásily regresi, přestože knihovna byla věcně v pořádku |
+| 9. 8. 2026 | `lib_grep` hledal formulaci, kterou pozdější změna přejmenovala | jednotky hlásily regresi, přestože knihovna byla věcně v pořádku |
 
 Od scaffold 2.11.0 to zavírá kontrola **(17)** ve `validate-platform.sh`, tedy brána v okamžiku commitu:
 

@@ -13,7 +13,7 @@
 
 ## Co se změnilo
 
-Třikrát ve třech dnech vznikl changeset s verifikačním blokem, který nemohl projít nikdy a nikomu: 7. 8. nezaescapované závorky ve vzoru, 8. 8. sloveso `meta_grep`, které jazyk nezná, 9. 8. `lib_grep` hledající formulaci, kterou pozdější změna přejmenovala. Uzavřený jazyk je fail-closed a vrátil pokaždé `NEZJISTENO`, takže nic tiše neprošlo - ale changeset se nedal přijmout a nikdo se to nedozvěděl, dokud ho někdo nepustil proti reálné jednotce. Ve třetím případě to dvě jednotky držely ve stavu `regrese`, přestože knihovna byla věcně v pořádku. Oprava pak stojí dodatek k vydanému changesetu, tedy nejdražší možnou cestu.
+Třikrát ve třech dnech vznikl changeset s verifikačním blokem, který nemohl projít nikdy a nikomu: 7. 8. nezaescapované závorky ve vzoru, 8. 8. sloveso `meta_grep`, které jazyk nezná, 9. 8. `lib_grep` hledající formulaci, kterou pozdější změna přejmenovala. Uzavřený jazyk je fail-closed a vrátil pokaždé `NEZJISTENO`, takže nic tiše neprošlo - ale changeset se nedal přijmout a nikdo se to nedozvěděl, dokud ho někdo nepustil proti reálné jednotce. Ve třetím případě to část jednotek drželo ve stavu `regrese`, přestože knihovna byla věcně v pořádku. Oprava pak stojí dodatek k vydanému changesetu, tedy nejdražší možnou cestu.
 
 **Nová kontrola (17) ve `validate-platform.sh`** to posouvá do okamžiku commitu:
 

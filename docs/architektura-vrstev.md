@@ -53,9 +53,8 @@ Vyplněnou jednotku máš v balíčku jako `ukazka-jednotky/`. Vznikla zkopírov
 ukazka-jednotky` nad ní projde.
 
 Hlavička `operations/status.md` je kontrakt (OR-03) a je to místo, ze kterého se čte stav
-portfolia. Nese ještě dvě metadata jednotky vedle stavu a fáze; jejich obor hodnot je vidět
-v šabloně a tady je nerozvádím, protože k pochopení vrstev nepřidávají a jsou to interní
-evidence.
+portfolia. Vedle stavu a fáze nese dvě metadata, která rozhodují o tom, jak se s jednotkou
+zachází; rozepsaná jsou níž v této sekci.
 
 **Orchestrátor a specialista.** Orchestrátor jednotky zadává, koordinuje a drží kvalitu
 zadání; specialisté dělají práci ve svých doménách. Rozdíl mezi tím, když session roli
@@ -63,6 +62,41 @@ zadání; specialisté dělají práci ve svých doménách. Rozdíl mezi tím, 
 vrátí výsledek), je technický fakt s důsledky, ne styl. Převzatá role vidí celou historii
 session, zavolaná začíná s prázdným kontextem a dostane jen to, co jí kdo napíše - odtud
 OR-01.
+
+### Klasifikace a typ: jen jedno z těch dvou polí smí řídit chování
+
+**Klasifikace** říká, pro koho se pracuje a v jakém režimu. Jednotka je interní, zákaznická,
+osobní, nebo je to samotná platforma. Klasifikace **chování řídit smí** a je to jediné pole
+hlavičky, které to smí: orchestrátor jednotky podle ní volí, jak se nakládá s citlivými
+daty, co smí opustit repozitář, jak často se hlásí stav a jakým tónem se komunikuje ven.
+
+**Typ** říká, jaký tvar má práce uvnitř. Vícekrokový průvodce procesem, doménový asistent
+po ruce, ohraničené zadání s koncem, mini-produkt jako trvalý artefakt, nebo automat, který
+běží bez člověka u toho. Typ **neřídí nic**. Je to štítek pro člověka, který se dívá na
+portfolio, a validátor jednotky je vůči němu slepý.
+
+Ta asymetrie je celý smysl obou polí a je vykoupená jednou opravenou chybou. Dřívější model
+bral kategorii projektu jako architektonický rozdíl: zákaznická práce byla vlastní vrstva
+s vlastním postupem, osobní jiná. Vzniklo tím škatulkování v abstrakci, které provoz
+nepotřeboval, a hlavně druhá doktrína, která se od první rozchází po detailech, o kterých
+nikdo nerozhodl. Oprava zněla: jeden mechanismus, kategorie jsou metadata nad ním. Proto se
+u typu drží pravidlo natvrdo - jakmile typ začne větvit chování, je to zpátky fork, jen
+pojmenovaný jinak.
+
+Hranice mezi typy jsou neostré a je to řečené nahlas, protože právě to chrání před
+fragmentací. Typy nejsou body na jedné ose; každý rozlišuje víc věcí naráz (jestli to má
+konec, kde stojí člověk vůči běhu, jestli vzniká trvalý artefakt). U štítku je to v pořádku,
+ale kdyby se hledala ta jedna správná osa, skončí to pěti doktrínami. Když sedí víc typů
+naráz, rozhoduje pevné pořadí - automat, projekt, mini-produkt, průvodce, asistent - a
+vyhrává první, který sedí. Typ se navíc smí za života jednotky změnit: ohraničené zadání se
+po dodání stává mini-produktem, který se udržuje.
+
+Dvě pojistky, protože obojí se plete. Asistent není agent: je to plná jednotka s vlastním
+adresářem a vlastním orchestrátorem, ne jeden soubor s definicí role. A automat je typ
+jednotky, ne složka s evidencí mechanismů.
+
+Které jednotky jsou v portfoliu a jak jsou klasifikované, tady nenajdeš. To je výskyt, ne
+mechanismus, a hranice balíčku vede přesně tudy.
 
 ## Platformní knihovna
 
@@ -78,23 +112,129 @@ Dvě pravidla, na kterých knihovna stojí:
   vylepšení. Nadstavba naopak kanonickou definici načte a přidá jen rozdíl, takže je čerstvá
   z konstrukce. Zákaz stínění kontroluje `validate.sh`.
 
+### Nadstavba má povinný tvar a ten tvar je celá její bezpečnost
+
+- **Vlastní jméno se suffixem prostředí.** Nikdy stejné jako kanonická definice; stínění je
+  zakázané a hlídá ho validátor jednotky.
+- **Ukazatel místo kopie.** Tělo začíná instrukcí načíst kanonickou definici a teprve pak
+  aplikovat rozdíl. Nadstavba neopakuje personu, metodiku ani normy; je v ní jen delta,
+  cílově do několika desítek řádků.
+- **Kompletní výčet nástrojů v hlavičce.** Jediná povolená duplikace a technická nutnost,
+  protože hlavičky se neslučují. Výsledná sada smí být užší i širší než kanonická -
+  oprávnění jsou vlastnost prostředí, ne role.
+- **Čerstvost z konstrukce.** Nadstavba čte kanonickou definici při spuštění, takže se
+  vylepšení propíše okamžitě. Není co synchronizovat, takže není co rozejít.
+
+**Strop jsou dvě vrstvy.** Kanonická plus nanejvýš jedna nadstavba, nikdy řetěz. Potřeba
+třetí vrstvy není problém k vyřešení další nadstavbou, je to signál špatné granularity: buď
+to patří do kanonické definice, nebo je to jiná role.
+
+### Kdy je to nadstavba a kdy fork, který se rozejde
+
+Tohle rozhodnutí uděláš sám a nikdo u toho nestojí, tak ať je aspoň rozhodnutelné. Tři
+otázky:
+
+1. **Přidávám, nebo přepisuji?** Nadstavba přidává - konektor do systému, který existuje jen
+   tady, doménový slovník, lokální pravidlo. Když sahám na personu, na hranice domény nebo
+   na metodiku, není to lokální odchylka, je to nesouhlas s kanonickou definicí. Ten se řeší
+   v ní, ne vedle ní.
+2. **Platí to jen tady, nebo je to obecné zlepšení?** Zlepšení schované v nadstavbě je
+   nejhorší z možností: dostane ho jedno prostředí, ostatní ne a nikdo se o něm nedozví.
+   Kanonická definice je jediné místo, kde se role rozvíjí.
+3. **Přežije to upgrade kanonické vrstvy?** Delta počítá s tím, že text pod ní se bude
+   měnit. Když by si po upgradu s kanonickou definicí odporovala, není to delta, je to jiná
+   role.
+
+Praktický práh je délka. Když delta roste a začne opakovat věty, které stojí i v kanonické
+definici, přestala být deltou dřív, než sis toho všiml - a ta zopakovaná pasáž je přesně to
+místo, které se rozejde první.
+
+**Proč je kopie pod stejným jménem tak lákavá.** Protože je nejlevnější. Soubor máš před
+sebou, zkrátíš ho na to, co zrovna potřebuješ, a funguje to hned. Nevidíš, co jsi ztratil:
+kopie přestala dostávat vylepšení a nic o tom neřekne, protože zkrácená definice neselže,
+jen umí míň. U jednoho nasazení jsme takhle měli lokální definici o pětatřiceti řádcích,
+která stínila plnotučnou kanonickou, vedle ní druhou zkrácenou kopii, model zapsaný mimo
+konvenci a nulové odkazy na normy. Nic z toho nespadlo. A byl to přesně ten kanál, kterým
+jedna norma nedorazila do jednotky, která ji potřebovala: kopie se odpojí tiše a upgrade už
+nikdy nedostane.
+
+## Render: jak se sada dostane na stroj, který nespravujeme
+
+Nadstavba stojí na tom, že kanonická definice je na stroji po ruce. Mimo naše prostředí to
+neplatí a instalace knihovny tam nepřipadá v úvahu ze dvou důvodů naráz: vystavila by osobní
+vrstvu držitele účtu i celou metodiku. Ukazatel na soubor, který na cílovém stroji
+neexistuje, je ale k ničemu. Odtud třetí mechanismus.
+
+**Render je sestavení, ne kopie.** Z kanonické definice a případné delty vyrobí pro
+konkrétní prostředí artefakt, který stojí sám o sobě. Čtyři vlastnosti, všechny povinné: je
+evidovaný v manifestu renderu (jiný soubor než manifest šablony, o kterém je řeč níž); je
+vyloučený z verzování v repozitáři příjemce, protože naše metodika nemá končit v cizím
+gitu; nemá v sobě ukazatel, protože na cílovém stroji není na co ukazovat; a **nikdy se
+needituje rukou** - změna jde do kanonické definice nebo do delty a artefakt se sestaví
+znovu.
+
+**Sankcionované stejné jméno.** Tady render naráží na zákaz stínění: artefakt musí nést
+běžné jméno role, protože se na něj odkazuje katalog i spouštěč. Rozřešení je v tom, co ten
+zákaz vlastně chrání. Zakázaný je ručně udržovaný fork, protože se rozejde. Artefakt renderu
+je jiná třída: výstup sestavení, u kterého je drift vyloučený konstrukcí, protože příští běh
+soubor přepíše. Validátor proto třídí soubory podle manifestu, ne podle shody jmen.
+
+| Třída souboru v `.claude/agents/` | Poznávací znak | Co pro ni platí |
+|---|---|---|
+| Artefakt renderu | je v manifestu renderu | čtyři vlastnosti výše; stejné jméno povolené |
+| Zdroj nadstavby | tvar `<kanonická>-<suffix>`, kanonická existuje | ukazatel, delta, kompletní výčet nástrojů |
+| Role jen pro toto prostředí | jméno bez kanonického protějšku | ukazatel se nevyžaduje, kontroluje se hlavička |
+| Ruční fork | koliduje s kanonickou a v manifestu není | zakázáno, validátor to hlásí jako chybu |
+
+Na té tabulce je nejcennější poznámka o síle testu. Původní kontrola porovnávala jména
+s knihovnou, takže byla nejpřísnější na stroji, kde knihovna je, a na cílovém stroji, kde
+o to jde nejvíc, procházela naprázdno. Identita odvozená z manifestu na přítomnosti knihovny
+nezávisí.
+
+**Oprávnění patří prostředí, ne roli.** Část rolí se renderuje bez jakékoli delty, protože
+nemá nic lokálního - a tím neměla kde vyjádřit, že v cizím prostředí smí míň. Renderovala se
+s kanonickou sadou nástrojů psanou pro naše prostředí a jednou tím na cizím stroji rozšířila
+práva role nad schválenou hranici. Proto oprávnění žijí v konfiguraci renderu pro dané
+prostředí a aplikují se na všechny třídy. Kanonická definice tím zůstane bez forku a pravidlo
+se propíše do hlavičky artefaktu.
+
+Autorita je přitom na straně seznamu povoleného, ne zakázaného, a je fail-closed: co v něm
+není, do artefaktu nejde, i kdyby to nikdo nezakázal. Oba doložené případy téhle třídy, co
+stály a proč platí, že udržovaný má být ten seznam, jehož zastarání selže fail-closed, jsou
+rozepsané v [`casy/02-vycet-zakazaneho-je-o-krok-pozadu.md`](casy/02-vycet-zakazaneho-je-o-krok-pozadu.md).
+Sem to nepíšu podruhé.
+
+Poslední detail, na který se přijde až v provozu: zápisy artefaktů čekají ve frontě, dokud
+neprojdou všechny role. Půlka nasazené sady je horší stav než žádná.
+
+Konfigurace konkrétního nasazení - manifest, seznam povolených nástrojů, šablona prostředí -
+v balíčku není. Popsaný je mechanismus, spustitelný tu není; důvod je
+v [`hranice-baliku.md`](hranice-baliku.md).
+
 ## Architektonická rozhodnutí
 
-Platforma má třináct architektonických rozhodnutí. Ta, která tvarují vrstvy a práci uvnitř
-nich, jsou tady; zbytek se týká distribuce k jinému prostředí a vztahu k zákaznickým datům
-a v tomhle balíčku není (viz [`hranice-baliku.md`](hranice-baliku.md)).
+Platforma má třináct architektonických rozhodnutí. Jedenáct z nich tvaruje vrstvy, knihovnu
+a práci uvnitř nich a jsou v tabulce. Dvě zbývající řeší vlastnictví dat v zákaznickém
+vztahu a dělbu jedné zakázky na víc jednotek; obojí se dá poctivě vysvětlit jen na
+konkrétním případu a ten ven nejde (viz [`hranice-baliku.md`](hranice-baliku.md)).
 
 | # | Rozhodnutí | Jednou větou |
 |---|---|---|
+| AR-01 | Knihovna je výchozí domov role | Role vzniká rovnou v knihovně a je dostupná všem jednotkám; lokální role je výjimka, ne výchozí stav. Stack roste s lifecyklem: audit, hodnocení, návrh na vyřazení. |
 | AR-02 | Jeden zdroj pravdy pro definice rolí | Definice žije v knihovně; ručně psaný duplikát v projektu neexistuje, odvozený katalog se generuje. |
 | AR-03 | `operations/` jako povinná vrstva jednotky | Bez stavu, backlogu, rozhodnutí a runbooků není jednotka provoz, ale sklad dokumentů. |
 | AR-04 | `strategic/` jako volitelná vrstva | Strategická práce má vlastní místo, ale jen tam, kde se dělá; prázdná kostra je vycpávka. |
-| AR-05 | Čtyři vrstvy podle správy | Tabulka nahoře. Fyzická lokace je organizační konvence, ne architektonický rozdíl. |
+| AR-05 | Čtyři vrstvy podle správy | Tabulka nahoře. Fyzická lokace je organizační konvence, ne architektonický rozdíl; klasifikace a typ jednotky jsou metadata nad jedním mechanismem, ne kategorie v architektuře. |
 | AR-06 | Víc úrovní orchestrace, jeden vstupní bod | Člověk mluví s jedním orchestrátorem; ten zakládá jednotky a předává je jejich vlastním orchestrátorům. Paralelní provoz bez kolize kontextů. |
 | AR-07 | Repozitář je pracovní paměť, znalostní báze dlouhodobá | Rozpracované žije v repu, vydané a trvalé ve znalostní bázi. |
 | AR-08 | Dva typy obsahu, dva zdroje pravdy | Implementační obsah (definice, skills, normy, kód) má zdroj pravdy na disku a je verzovaný gitem. Živý obsah firmy má zdroj pravdy ve znalostní bázi a do gitu nepatří. |
-| AR-12 | Vrstvení definic | Kanonická definice plus nanejvýš jedna nadstavba. Řetězení nadstaveb je signál špatné granularity, ne řešení. |
+| AR-09 | Tenant jako vlastní vrstva | Každý celek, pro který se pracuje, má vlastní tenantní projekt a jednoho orchestrátora: jedna kanonická definice plus tenantní kontext, žádný fork role per tenant. |
+| AR-12 | Vrstvení definic a distribuce ven | Kanonická definice plus nanejvýš jedna nadstavba; řetězení je signál špatné granularity. Na stroj mimo naše prostředí se sada dostane renderem, ne instalací knihovny. |
 | AR-13 | Propagace změn | Changeset, evidence převzetí, brána. Detail níž. |
+
+AR-07 a AR-08 jsou dvě kolmé osy jednoho rozhodování: kam který obsah patří. Rozepsané jsou
+i se zavedenou podobou PARA a se čtyřmi místy, kde to dnes drhne,
+v [`datove-vrstvy.md`](datove-vrstvy.md).
 
 ## Scaffold: šablona jako verzovaný artefakt
 
@@ -130,7 +270,7 @@ motor a jiné publikum.
 | | Osa A: způsob práce | Osa B: software |
 |---|---|---|
 | Obsah | definice rolí, normy, šablony, engine | server, rozhraní, skripty, dokumentace produktu |
-| Motor | kopie šablon a knihovny | vydání s tagem a řízená instalace |
+| Motor | render definic a kopie šablon | vydání s tagem a řízená instalace |
 | Evidence u příjemce | `operations/platform-baseline.md` jednotky | evidence instalace u té instance |
 
 **Changeset** je lístek k jedné změně: co se změnilo, koho se to týká, co má příjemce

@@ -30,3 +30,11 @@ týmu; k mechanismu to nepřidává nic a ven to nepatří.
 
 Ke každému casu je připsané, **kde si tvrzení ověříš přímo v tomhle repu**. Když se
 odkaz týká něčeho, co v balíčku není, je to u toho napsané.
+
+## Druhá řada, jiný předmět
+
+Vedle téhle složky stojí [`docs/pripady-pouziti/`](../pripady-pouziti/README.md). Rozdíl je
+v předmětu: tady jsou **incidenty platformy samotné**, tedy co se pokazilo uvnitř systému
+a jak se to našlo. Tam jsou **projekty, na kterých se pracovalo**: co se zadalo, jak se
+práce rozdělila, kde vstoupil člověk a co z toho vzniklo. Pravidla anonymizace platí pro
+obě řady stejně.

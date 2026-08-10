@@ -17,7 +17,7 @@
 
 **Vada, která to spustila.** Dokument vznikl 7. 8. 2026 a 9. 8. tvrdil, že osa A je na `v2.10.1`, zatímco platforma byla o tři vydání dál. Druhý domov čísla driftuje i uvnitř dokumentu, který před druhými domovy čísel varuje - to je ta nejlevnější možná ukázka, že apel na pečlivost mechanismus nenahradí.
 
-**Měřením se ukázalo, že zastaralé číslo nebylo jediné.** Tři jednotky, o kterých text tvrdil, že nesou v kořeni `VERSION`, ho už nemají. Kokpit, o kterém text tvrdil, že nemá tag, ho mezitím má. Výčet schémat osy D obsahoval sedm položek, zatímco měření jich najde třináct. Osa C byla popsaná jako „dnes jeden nástroj" a mezitím přibyl druhý. Žádná z těch vět nebyla napsaná ve zlé víře, všechny čtyři zestárly stejným způsobem.
+**Měřením se ukázalo, že zastaralé číslo nebylo jediné.** Jednotky, o kterých text tvrdil, že nesou v kořeni `VERSION`, ho už nemají. Kokpit, o kterém text tvrdil, že nemá tag, ho mezitím má. Výčet schémat osy D obsahoval sedm položek, zatímco měření jich najde třináct. Osa C byla popsaná jako „dnes jeden nástroj" a mezitím přibyl druhý. Žádná z těch vět nebyla napsaná ve zlé víře, všechny čtyři zestárly stejným způsobem.
 
 **Historické číslo se odlišilo typograficky, aby šlo rozlišit strojově:** doklad o minulosti a horizont odstranění se píše s předponou `v` (`v2.0.0`), živé číslo v dokumentu být nesmí vůbec. Dokument to o sobě říká v nové sekci „Proč tu skoro nejsou čísla", takže pravidlo se čtenář dozví na místě, kde ho potřebuje.
 

@@ -34,11 +34,21 @@ znovu; příkaz je v hlavičce každého souboru, takže si je můžeš přehrá
 4. **Režim `--baseline` puštěný na tvůj vlastní projekt funguje, ale počítá frontu proti
    našim lístkům.** Správné chování a nesmyslný výsledek zároveň. Pro vlastní použití
    nastav `NSL_META_ROOT` na svůj kořen s `operations/changesets/`.
-5. **Distribuční mechanismus, šablona tenanta a vrstva pracovního prostoru tu nejsou.** Je
-   to konfigurace konkrétního nasazení u konkrétního příjemce. To, že tu není, je
-   nejlevnější doklad, že hranice mezi platformou a nasazením je reálná, ne deklarovaná.
-6. **Definice rolí odkazují i na dokumenty, které tu nejsou.** Odkaz zůstává schválně:
-   ukazuje, kde ten fakt bydlí. Co v balíčku je, vyjmenovává `README.md`.
+5. **Kód distribučního mechanismu, šablona tenanta a vrstva pracovního prostoru tu nejsou.**
+   Jak render funguje a proč vznikl, je popsané
+   v [`architektura-vrstev.md`](architektura-vrstev.md); co tu chybí, jsou soubory
+   konkrétního nasazení u konkrétního příjemce - manifest, seznam povolených nástrojů,
+   šablona prostředí. To, že tu nejsou, je nejlevnější doklad, že hranice mezi platformou
+   a nasazením je reálná, ne deklarovaná.
+6. **Výčet rolí není úplný.** V `knihovna/agents/` jsou role z platformní knihovny; lokální
+   definice i část knihovních zůstaly doma, důvod je
+   v [`../knihovna/README.md`](../knihovna/README.md). Definice, které tu jsou, navíc
+   odkazují i na dokumenty mimo balíček. Odkaz zůstává schválně: ukazuje, kde ten fakt
+   bydlí. Co v balíčku je, vyjmenovává `README.md`.
+
+Obě řady případů, [`casy/`](casy/README.md) i [`pripady-pouziti/`](pripady-pouziti/README.md),
+píšou u každého tvrzení, kde si ho v repu ověříš. Když ověřit nejde, je to tam napsané rovnou
+a důvod je v tomhle soupisu.
 
 ## Co si můžeš vzít a použít zítra
 

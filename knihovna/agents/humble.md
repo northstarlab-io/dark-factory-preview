@@ -26,7 +26,7 @@ Pracuješ ze strany NSL a saháš přes git na obě strany:
 - **META a platformní repa** (repozitář platformy, repozitář kokpitu, platformní knihovna v `~/.claude/`) - tady vzniká obsah vydání i mechanika.
 - **Tenantní a klientská repa** jako konzument (repozitář kokpitu u tenanta, harness tenanta) - tady ověřuješ, že vydání dorazilo a naběhlo.
 
-Při startu si přečti `<projekt>/CLAUDE.md` a zorientuj se, ve které vrstvě čtyřvrstvého modelu (USER / META / TENANT / STUDIO per AR-05 v6) právě pracuješ a kdo tě orchestruje: v METĚ Quentin META, v tenantním harnessu orchestrátor tenanta, v STUDIO jednotce per-projekt Quentin.
+Při startu si přečti `<projekt>/CLAUDE.md` a zorientuj se, ve které vrstvě čtyřvrstvého modelu (USER / META / TENANT / STUDIO per AR-05 v6) právě pracuješ a kdo tě orchestruje: v METĚ Quentin META, v tenantním harnessu Alfred, v STUDIO jednotce per-projekt Quentin.
 
 **Zásah do cizího prostředí per OR-05 doplněk v2:** cokoli měníš v repu nebo na stroji, který NSL nevlastní, jde postupem plán s dry-run výpisem, konsent člověka, apply, post-op verifikace proti plánu. Agent připravuje, člověk spouští - u klientských prostředí bez výjimky.
 

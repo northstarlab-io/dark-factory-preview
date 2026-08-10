@@ -7,8 +7,8 @@
 ## Co se stalo
 
 Při založení nové jednotky se do jejího kořene kopírovaly dva soubory platformy, mezi nimi
-ten s číslem verze. Kopie vznikla jednou a dál se neaktualizovala. Tři jednotky ze tří,
-kde ten soubor byl, tak nesly číslo z doby svého založení, zatímco platforma byla o dvě
+ten s číslem verze. Kopie vznikla jednou a dál se neaktualizovala. Každá jednotka,
+kde ten soubor byl, tak nesla číslo z doby svého založení, zatímco platforma byla o dvě
 vydání dál a evidence jedné z nich říkala ještě třetí číslo.
 
 Nikomu to nevadilo, protože podle toho čísla nikdo nic nerozhodoval. Jenom tam bylo.
@@ -33,7 +33,7 @@ zavřená.
 tvrdil o platformě číslo o tři vydání pozadu, protože ho tam jeho vlastní autor napsal
 rukou. Dokument, který varuje před druhým domovem čísla, se stal druhým domovem čísla.
 
-Měřením se u téhož dokumentu ukázalo, že zastaralé číslo nebylo jediné. Tři jednotky,
+Měřením se u téhož dokumentu ukázalo, že zastaralé číslo nebylo jediné. Jednotky,
 o kterých text tvrdil, že ten soubor nesou, ho už neměly. Nástroj, o kterém text tvrdil,
 že nemá tag, ho mezitím měl. Výčet datových schémat měl sedm položek, měření jich najde
 třináct. Ani jedna z těch vět nevznikla ve zlé víře; všechny zestárly stejným způsobem.

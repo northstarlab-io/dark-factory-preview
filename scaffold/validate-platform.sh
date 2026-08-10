@@ -1521,7 +1521,7 @@ fi
 #         Váha se liší podle toho, čí je to práce: co tenhle commit zakládá nebo mění,
 #         je FAIL (oprava je levná a autor je u toho), zbytek je WARN a opravuje se
 #         dodatkem k changesetu - přesně případ z 9. 8., kdy pozdější changeset
-#         přejmenoval formulaci, kterou starší verify řádek hledal, a dvě jednotky
+#         přejmenoval formulaci, kterou starší verify řádek hledal, a jednotky
 #         od té chvíle hlásily regresi, přestože knihovna byla věcně v pořádku.
 #
 # Jazyk se sem NEopisuje. Výčty i posouzení tvaru řádku drží scaffold/lib/changeset.sh

@@ -29,17 +29,21 @@ Nejtěžší na tom není napsat agenta. Těžká je tahle druhá fáze: kolize,
 
 **Upgrade ví, čeho se nesmí dotknout.** Šablona jednotky je verzovaný artefakt a manifest dělí cesty na to, co upgrade přepisuje, a na data jednotky. Cesta, která není ani v jedné množině, se z principu nechává být.
 
+**Obsah má dvě osy, ne jednu složku.** Kam co patří, rozhoduje typ obsahu (kdo je jeho zdroj pravdy: disk, nebo znalostní báze) a fáze (rozpracované, nebo platné). Osy jsou kolmé a jejich slití končí u pravidla „důležité věci do znalostní báze", které nerozhoduje nic. Rozepsané i se zavedenou podobou PARA a se čtyřmi místy, kde to dnes drhne, v [datove-vrstvy.md](datove-vrstvy.md).
+
 ## Čím se to liší od toho, co si postavíš sám
 
 Nic z toho není technicky obtížné. Rozdíl není ve schopnostech, ale v tom, co je už zaplacené:
 
-1. **Hranice mezi rolemi jsou vypsané v textu obou rolí.** Ne v hlavě toho, kdo je psal. Věta „tohle nedělám já, dělá to role, která vlastní tuhle doménu" je to, co u víc rolí naráz brání tomu, aby dvě dělaly totéž jinak.
+1. **Hranice mezi rolemi jsou vypsané v textu obou rolí.** Ne v hlavě toho, kdo je psal. Věta „tohle nedělám já, dělá to role, která vlastní tuhle doménu" je to, co u víc rolí naráz brání tomu, aby dvě dělaly totéž jinak. Ověřit si to jde na jedné dělbě: kdo vlastní mechaniku vydání a kdo text, který k němu čte zákazník, stojí v `knihovna/agents/humble.md` i v `knihovna/agents/komensky.md`.
 2. **Pravidla mají doložený původ.** Pravidlo bez incidentu je názor. Totéž pravidlo s datem a popisem selhání je provozní paměť, kterou lze předat dál a taky vyhodit, až přestane platit.
 3. **Propagace není pull.** Vlastní systém obvykle stojí na tom, že si změnu pamatuje autor. To drží do chvíle, kdy je konzumentů víc než jeden a autor si vzpomene o týden později.
 4. **Kontrola není disciplína.** Všechno, co v tomhle systému hlídá regulární výraz, hlídal dřív člověk. Ten přesun je celý přínos a nebyl zadarmo, viz sekce níž.
 5. **Hranice mezi platformou a nasazením u klienta je fyzická.** V tomhle balíčku není konfigurace žádného nasazení a je to nejlevnější doklad, že ta hranice není jen deklarovaná.
 
 Čestněji řečeno: rozdíl není v tom, co to umí. Je v tom, že je to zapsané, vynucené strojem a přežije to týden, kdy se tomu nikdo nevěnuje. Kdybys to stavěl sám, dojdeš ke stejným mechanismům; jen tě to bude stát ty incidenty.
+
+Jak to vypadá na konkrétní práci, ukazují čtyři případy v [pripady-pouziti/](pripady-pouziti/README.md): co se zadalo, jak se to rozdělilo, co odvedla agentní vrstva, kde vstoupil člověk a co se v tom předělávalo. Oddíl o předělávání je u každého nejdelší schválně.
 
 ## Co z toho běží dnes
 

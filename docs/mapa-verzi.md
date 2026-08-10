@@ -141,7 +141,7 @@ dopíše číslo v dobré víře a systém začne lhát na deseti místech nará
 
 | Číslo | Kam se vědomě nepropisuje | Proč |
 |---|---|---|
-| Osa A | do kořene jednotky | Kopie vzniká při založení a dál se neaktualizuje. Ve všech třech jednotkách, kde ten soubor byl, zamrzl na `v2.0.0`, zatímco platforma byla dál. Druhý domov čísla driftuje vždycky. |
+| Osa A | do kořene jednotky | Kopie vzniká při založení a dál se neaktualizuje. Ve všech jednotkách, kde ten soubor byl, zamrzl na `v2.0.0`, zatímco platforma byla dál. Druhý domov čísla driftuje vždycky. |
 | Osa A | k uživateli vydávaného softwaru | Uživatele nezajímá verze našeho způsobu práce, zajímá ho verze nástroje, který spustil. Číslo bez adresáta je šum a šum se přestane číst. |
 | Osa A | do prózy manuálů **a do téhle mapy** | Číslo napsané rukou do věty zastará první změnou a nikdo si toho nevšimne. Kde je v dokumentaci potřeba, píše ho generátor; jinde stojí cesta ke zdroji a příkaz. |
 | Osa B | do baseline jednotky | Tam je evidence osy A. Jedna evidence odpovídající na dvě otázky neodpoví spolehlivě ani na jednu. |

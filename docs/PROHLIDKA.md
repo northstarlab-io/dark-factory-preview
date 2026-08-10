@@ -4,6 +4,10 @@ Pět míst v repu v pevném pořadí, zhruba patnáct minut. Nemusíš nic spou�
 
 Pojmy, o které cestou zakopneš, jsou vysvětlené v [CO-JE-DARK-FACTORY.md](CO-JE-DARK-FACTORY.md).
 
+Všech pět zastávek ukazuje mechanismus, tedy soubor, který něco vynucuje. Práci, kterou ten
+mechanismus obsluhuje, tady schválně nenajdeš; ta je popsaná ve čtyřech případech
+v [pripady-pouziti/](pripady-pouziti/README.md) a čte se samostatně, bez pořadí a bez příkazů.
+
 ## 1. Z čeho vzniká jednotka a co o sobě hlásí
 
 `scaffold/studio-template/` a `ukazka-jednotky/operations/status.md`
@@ -14,11 +18,13 @@ Pojmy, o které cestou zakopneš, jsou vysvětlené v [CO-JE-DARK-FACTORY.md](CO
 
 ## 2. Role jako kontrakt
 
-`knihovna/agents/quentin.md`
+`knihovna/agents/humble.md` a k němu `knihovna/agents/komensky.md`
 
-**Co tady uvidíš.** Frontmatter s modelem a nástroji, výčet „v doméně" a „mimo doménu" včetně toho, komu se práce předává, železná pravidla s prahem, kdy si role smí úkol vzít sama, a u několika z nich doložený incident s datem. Ve stejné složce jsou i další definice; podle čeho jsou vybrané, říká `knihovna/README.md`.
+**Co tady uvidíš.** Roli, která vlastní cestu změny od hotového kódu k zapnutí u konkrétního netechnického uživatele. Frontmatter s modelem a nástroji, výčet „v doméně" a „mimo doménu" adresovaný jménem sousední role, železná pravidla a sekci „Hranice vůči sousedům": u každého souseda šedá zóna, kdo v ní vede a jednovětá heuristika pro nové případy.
 
-**Co z toho plyne.** Role není prompt, je to kontrakt. Hranice v něm nejsou z pořádkumilovnosti: skoro každá je tam proto, že se ta věc už jednou udělala špatně a bylo to vidět na výstupu.
+**Proč hned dvě.** Poznámky k vydání se dotýkají obou rolí a hranice mezi nimi se rozhodovala, ne vymýšlela: mechanika changesetu a vydání patří jedné, žánr a finální znění textu pro zákazníka druhé, rozhraním mezi nimi je changeset. Najdi si v obou souborech sekci „Poznámky k vydání" a přečti obě, zabere to dvě minuty. Říkají totéž jinými slovy, se stejným datem rozhodnutí. To je celý trik: hranice je vypsaná z obou stran, takže se pozná, když se rozejde.
+
+**Co z toho plyne.** Role není prompt, je to kontrakt. Hranice v něm nejsou z pořádkumilovnosti: skoro každá je tam proto, že se ta věc už jednou udělala špatně a bylo to vidět na výstupu. Ve stejné složce jsou i ostatní definice; jak se čtou a proč ten seznam není úplný, říká `knihovna/README.md`.
 
 ## 3. Odkud se pravidla vzala
 
@@ -48,6 +54,12 @@ Když si příkaz pustíš, čekej u většiny lístků `FAIL`, ne `PASS`: jejic
 
 ## Kde to drhne a co dál
 
-Nejostřejší věc na konec: strojový sken přístupových údajů z konstrukce nevidí jméno klienta, hledá tvary tokenů. Při přípravě tohohle balíčku byl sken čistý a ruční audit našel jméno klienta ve víc než stovce souborů. Proto tu není historie. Zbytek toho, co dnes nefunguje, je v sekci Co dnes nefunguje v [CO-JE-DARK-FACTORY.md](CO-JE-DARK-FACTORY.md); pět případů rozepsaných i s tím, co se po nich změnilo v mechanismu, je v [casy/](casy/README.md).
+Nejostřejší věc na konec: strojový sken přístupových údajů z konstrukce nevidí jméno klienta, hledá tvary tokenů. Při přípravě tohohle balíčku byl sken čistý a ruční audit našel jméno klienta ve víc než stovce souborů. Proto tu není historie. Zbytek toho, co dnes nefunguje, je v sekci Co dnes nefunguje v [CO-JE-DARK-FACTORY.md](CO-JE-DARK-FACTORY.md).
+
+Odsud vedou tři cesty dál, žádná z nich není zastávka, protože se u nich nic nespouští:
+
+- [casy/](casy/README.md) - pět incidentů platformy rozepsaných i s tím, co se po nich změnilo v mechanismu.
+- [pripady-pouziti/](pripady-pouziti/README.md) - čtyři případy práce z reálných projektů: co se zadalo, co odvedla agentní vrstva, kde vstoupil člověk a co se v tom předělávalo.
+- [datove-vrstvy.md](datove-vrstvy.md) - kde data bydlí a podle čeho se rozhoduje, kam co patří; zavedená podoba PARA a čtyři místa, kde to dnes drhne.
 
 Když tě zaujal konkrétní mechanismus, napiš mi který (adresa je v [NOTICE.md](../NOTICE.md)). Sednout si nad jednou věcí, která ti dnes chybí, je užitečnější než nad celým systémem. A když ti u některé zastávky přijde, že je to postavené špatně, ozvi se s tím taky; kvůli tomu si to ukazujeme.

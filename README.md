@@ -5,13 +5,15 @@ Systém pro provoz práce s agenty v Claude Code: šablona jednotky, definice ro
 - **Chci vědět, co to je** -> [docs/CO-JE-DARK-FACTORY.md](docs/CO-JE-DARK-FACTORY.md)
 - **Radši se podívám** -> [docs/PROHLIDKA.md](docs/PROHLIDKA.md), pět míst v repu, patnáct minut, nic nemusíš spouštět
 - **Chci vědět, jak se to udržuje** -> [docs/normy.md](docs/normy.md), dvanáct provozních norem, u každé incident, který ji odhalil; vrstvy a architektonická rozhodnutí v [docs/architektura-vrstev.md](docs/architektura-vrstev.md)
+- **Chci vidět, co ten systém dělá za práci** -> [docs/pripady-pouziti/](docs/pripady-pouziti/), čtyři případy z reálných projektů včetně toho, co se v nich předělávalo; incidenty platformy samotné jsou vedle v [docs/casy/](docs/casy/)
+- **Chci vědět, kde data bydlí** -> [docs/datove-vrstvy.md](docs/datove-vrstvy.md), dvě osy rozhodování o umístění, zavedená podoba PARA a čtyři místa, kde to dnes drhne
 
 Co v balíčku je:
 
 | Složka | Co v ní najdeš |
 |---|---|
-| `docs/` | vysvětlení, prohlídka, normy, architektura, mapa verzí, hranice balíčku, pět casů |
-| `knihovna/` | definice rolí, metodické soubory, na které odkazují, a skilly |
+| `docs/` | vysvětlení, prohlídka, normy, architektura, datové vrstvy, mapa verzí, hranice balíčku, pět casů o incidentech a čtyři případy z projektů |
+| `knihovna/` | definice rolí z platformní knihovny, metodické soubory, na které odkazují, a skilly |
 | `scaffold/` | engine: validátory, sdílené funkce, hooky, testy, šablona jednotky |
 | `ukazka-jednotky/` | šablona zkopírovaná a vyplněná, na které validátor projde |
 | `operations/` | reálné changesety z jednoho týdne provozu a zachycené výstupy nástrojů |

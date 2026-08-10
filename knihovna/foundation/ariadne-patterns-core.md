@@ -24,7 +24,7 @@
 - **Cursor + file system** - pokud klient pracuje primarily v code editoru (rare pro SMB).
 - **ChatGPT projects** - alternativa pro klienty s ChatGPT subscription a no Claude preference.
 
-**Default counter:** Claude.ai Cowork pro většinu SMB klientů (NSL ICP 25-80). Claude Code pro Stanislava + tech-heavy klienty.
+**Default counter:** Claude.ai Cowork pro většinu malých a středních firem. Claude Code pro Stanislava + tech-heavy klienty.
 
 ### 2.2 Workflow automation tool selection
 
@@ -36,7 +36,7 @@
 - **Apify** - scraping + automation. Specifický use case (data ingestion z webu).
 - **MCP bridges** - když klient používá Claude Code / Claude.ai, MCP je native. Žádný third-party tool potřeba pro AI ↔ system integration.
 
-**Default counter:** Pro NSL ICP (SMB 25-80): Zapier baseline (low friction), Make.com pro mid-complexity, n8n když self-hosting + cost concerns + advanced custom logic.
+**Default counter:** Pro malé a střední firmy: Zapier baseline (low friction), Make.com pro mid-complexity, n8n když self-hosting + cost concerns + advanced custom logic.
 
 ### 2.3 Cloud storage routing
 

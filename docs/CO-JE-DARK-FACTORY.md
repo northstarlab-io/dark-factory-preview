@@ -19,7 +19,7 @@ Nejtěžší na tom není napsat agenta. Těžká je tahle druhá fáze: kolize,
 
 **Jednotka je atom.** Jedna oblast nebo jeden problém = jeden projekt s vlastním `CLAUDE.md` a složkou `operations/`. Každá jednotka o sobě povinně hlásí stav v hlavičce `operations/status.md`: sedm polí v pevném tvaru, mezi nimi klasifikace, fáze, zdraví a to, komu jednotka slouží. Hlavička je strojově čitelná, takže stav portfolia se nesbírá dotazováním, ale čte ze souborů, které existují stejně v každé jednotce.
 
-**Role je kontrakt, ne prompt.** Definice popisuje doménu, hranice vůči sousedním rolím, železná pravidla a anti-patterny. Většina textu neřeší, co má role dělat, ale kde přestává a komu to předává. Vzniká postupem: kompetenční mapa nejdřív, persona až potom, jméno schvaluje člověk. A agent svou vlastní definici needituje - zlepšení navrhuje, zapisuje ho jiná role po lidském schválení. Bez téhle hranice nejde odlišit záměr od nánosu.
+**Role je kontrakt, ne prompt.** Definice popisuje doménu, hranice vůči sousedním rolím, železná pravidla a anti-patterny. Většina textu neřeší, co má role dělat, ale kde přestává a komu to předává. Vzniká postupem: kompetenční mapa nejdřív, persona až potom, jméno schvaluje člověk. A agent svou vlastní definici needituje - zlepšení navrhuje, zapisuje ho jiná role po lidském schválení. Bez téhle hranice nejde odlišit záměr od nánosu. Co se z provozu sbírá, jak se z poznatku stane pravidlo a co se přitom neučí samo, je v [uceni-a-zavedeni.md](uceni-a-zavedeni.md).
 
 **Norma nese incident.** Každé provozní pravidlo má čtyři části: co platí, proč, test, kterým si ověříš, že to dodržuješ, a doložený případ, kterým vzniklo, včetně data a toho, co selhalo. Pravidlo bez incidentu se za měsíc nedá ani obhájit, ani vyhodit.
 
@@ -66,7 +66,7 @@ Záměrem, tedy ne hotovou věcí, zůstává: automatická integrace, měřená
 
 ## Kde zůstává člověk
 
-Na pěti místech a žádné z nich se neplánuje odstranit: rozhodnutí, co jde ven; akceptace výstupu; jméno nové role; zapnutí bran na konkrétním stroji; jakákoli komunikace s druhou stranou. Autonomní továrna to není. Je to továrna s jedním člověkem v bráně a hodně mechaniky za ní.
+Na šesti místech a žádné z nich se neplánuje odstranit: rozhodnutí, co jde ven; akceptace výstupu; jméno nové role; zapnutí bran na konkrétním stroji; jakákoli komunikace s druhou stranou; a zápis poznatku z provozu do definice role. To poslední místo je nejméně samozřejmé a má vlastní text: [uceni-a-zavedeni.md](uceni-a-zavedeni.md). Autonomní továrna to není. Je to továrna s jedním člověkem v bráně a hodně mechaniky za ní.
 
 ## Osm pojmů
 

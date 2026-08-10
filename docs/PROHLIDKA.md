@@ -56,10 +56,13 @@ Když si příkaz pustíš, čekej u většiny lístků `FAIL`, ne `PASS`: jejic
 
 Nejostřejší věc na konec: strojový sken přístupových údajů z konstrukce nevidí jméno klienta, hledá tvary tokenů. Při přípravě tohohle balíčku byl sken čistý a ruční audit našel jméno klienta ve víc než stovce souborů. Proto tu není historie. Zbytek toho, co dnes nefunguje, je v sekci Co dnes nefunguje v [CO-JE-DARK-FACTORY.md](CO-JE-DARK-FACTORY.md).
 
-Odsud vedou tři cesty dál, žádná z nich není zastávka, protože se u nich nic nespouští:
+Odsud vedou cesty dál, žádná z nich není zastávka, protože se u nich nic nespouští:
+
+- [mapa-projektu.md](mapa-projektu.md) - z jakých projektů se to skládá a co má který na starosti; páteř jmenovitě, byznysová vrstva po kategoriích.
 
 - [casy/](casy/README.md) - pět incidentů platformy rozepsaných i s tím, co se po nich změnilo v mechanismu.
 - [pripady-pouziti/](pripady-pouziti/README.md) - čtyři případy práce z reálných projektů: co se zadalo, co odvedla agentní vrstva, kde vstoupil člověk a co se v tom předělávalo.
 - [datove-vrstvy.md](datove-vrstvy.md) - kde data bydlí a podle čeho se rozhoduje, kam co patří; zavedená podoba PARA a čtyři místa, kde to dnes drhne.
+- [uceni-a-zavedeni.md](uceni-a-zavedeni.md) - co se z provozu sbírá samo, proč zápis do definice role dělá člověk, a šest kroků od zadání k tomu, že to tým používá.
 
 Když tě zaujal konkrétní mechanismus, napiš mi který (adresa je v [NOTICE.md](../NOTICE.md)). Sednout si nad jednou věcí, která ti dnes chybí, je užitečnější než nad celým systémem. A když ti u některé zastávky přijde, že je to postavené špatně, ozvi se s tím taky; kvůli tomu si to ukazujeme.

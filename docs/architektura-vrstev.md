@@ -96,7 +96,9 @@ adresářem a vlastním orchestrátorem, ne jeden soubor s definicí role. A aut
 jednotky, ne složka s evidencí mechanismů.
 
 Které jednotky jsou v portfoliu a jak jsou klasifikované, tady nenajdeš. To je výskyt, ne
-mechanismus, a hranice balíčku vede přesně tudy.
+mechanismus. Páteř platformy jménem a byznysovou vrstvu kategoriemi popisuje
+[`mapa-projektu.md`](mapa-projektu.md); jmenný seznam zákazníků a rozsah portfolia
+z balíčku nejdou.
 
 ## Platformní knihovna
 

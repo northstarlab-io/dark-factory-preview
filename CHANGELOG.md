@@ -4,6 +4,24 @@ Formát podle [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/), verzová
 [Semantic Versioning](https://semver.org/lang/cs/). Tenhle soubor má vlastní řadu čísel:
 počítá změny balíčku, ne změny platformy.
 
+## [1.3.0] - 2026-08-10
+
+### Přidáno
+
+- `docs/mapa-projektu.md` - z jakých projektů se systém skládá a co má který na starosti.
+  Páteřní projekty jmenovitě, u každého účel, konzument a věta o tom, co by se stalo,
+  kdyby chyběl; byznysová a osobní vrstva po kategoriích, bez jmen a bez počtů.
+- `docs/uceni-a-zavedeni.md` - co se z provozu sbírá automaticky, kde je člověk povinně
+  v cyklu a proč, čtyři věci, které se přitom neučí samy, a šest kroků od zadání k tomu,
+  že systém někdo v týmu používá.
+
+### Změněno
+
+- Rozcestníky vedou na oba nové dokumenty: kořenový `README.md`, `docs/PROHLIDKA.md`,
+  `docs/CO-JE-DARK-FACTORY.md`, `docs/hranice-baliku.md`, `docs/architektura-vrstev.md`.
+- `docs/architektura-vrstev.md` už netvrdí, že hranice balíčku vede u výskytu jednotek.
+  Vede jinudy: páteř je jmenovitě v mapě, ven nejdou jména zákazníků a rozsah portfolia.
+
 ## [1.2.0] - 2026-08-10
 
 ### Přidáno

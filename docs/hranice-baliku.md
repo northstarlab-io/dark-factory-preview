@@ -19,7 +19,7 @@ potřebuje korpus, který v balíčku není" je poctivější než skript, kter�
 Zachycené výstupy jsou v `operations/ukazky/`. Jsou to snímky k 9. 8. 2026, negenerují se
 znovu; příkaz je v hlavičce každého souboru, takže si je můžeš přehrát sám.
 
-## Šest věcí, které tu chybí, a proč
+## Sedm věcí, které tu chybí, a proč
 
 1. **Instalátor bran tu není a je to schválně.** Nastavil by `core.hooksPath` na hooky,
    které volají validátor platformy; ten se mimo svůj korpus odmítne spustit, takže by ti
@@ -40,7 +40,12 @@ znovu; příkaz je v hlavičce každého souboru, takže si je můžeš přehrá
    konkrétního nasazení u konkrétního příjemce - manifest, seznam povolených nástrojů,
    šablona prostředí. To, že tu nejsou, je nejlevnější doklad, že hranice mezi platformou
    a nasazením je reálná, ne deklarovaná.
-6. **Výčet rolí není úplný.** V `knihovna/agents/` je platformní knihovna celá; doma zůstaly
+6. **Výstupy sebeučící smyčky tu nejsou, jen postupy.** Retro, kontrola výstupu i brána
+   promotion jsou v `knihovna/skills/` celé, ale retro reporty a týdenní fronty kandidátů
+   vznikají uvnitř jednotek a ty tu nejsou. Ověřitelný je postup a jeho stopa v katalogu
+   selhání a v definicích rolí, ne provozní záznamy. Rozepsané
+   v [`uceni-a-zavedeni.md`](uceni-a-zavedeni.md), část A.
+7. **Výčet rolí není úplný.** V `knihovna/agents/` je platformní knihovna celá; doma zůstaly
    definice vázané na jednu jednotku nebo na jednoho tenanta, důvod je
    v [`../knihovna/README.md`](../knihovna/README.md). Definice, které tu jsou, navíc
    odkazují i na dokumenty mimo balíček. Odkaz zůstává schválně: ukazuje, kde ten fakt

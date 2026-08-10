@@ -40,8 +40,8 @@ znovu; příkaz je v hlavičce každého souboru, takže si je můžeš přehrá
    konkrétního nasazení u konkrétního příjemce - manifest, seznam povolených nástrojů,
    šablona prostředí. To, že tu nejsou, je nejlevnější doklad, že hranice mezi platformou
    a nasazením je reálná, ne deklarovaná.
-6. **Výčet rolí není úplný.** V `knihovna/agents/` jsou role z platformní knihovny; lokální
-   definice i část knihovních zůstaly doma, důvod je
+6. **Výčet rolí není úplný.** V `knihovna/agents/` je platformní knihovna celá; doma zůstaly
+   definice vázané na jednu jednotku nebo na jednoho tenanta, důvod je
    v [`../knihovna/README.md`](../knihovna/README.md). Definice, které tu jsou, navíc
    odkazují i na dokumenty mimo balíček. Odkaz zůstává schválně: ukazuje, kde ten fakt
    bydlí. Co v balíčku je, vyjmenovává `README.md`.

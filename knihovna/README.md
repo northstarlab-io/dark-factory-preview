@@ -5,12 +5,11 @@ metodické soubory, na které definice odkazují, `skills/` workflow postupy vol
 
 ## Seznam rolí není úplný
 
-V `agents/` jsou role z platformní knihovny, tedy ty, které se volají napříč jednotkami.
-Úplný výčet to není, a to ze dvou důvodů. Vedle nich běžně existují definice vázané na
-jednu jednotku nebo na jednoho tenanta: buď pojmenované nadstavby nad těmihle definicemi,
-nebo role, které vznikly pro jeden kontext a mimo něj nedávají smysl. Ty jsou lokální a
-v balíčku nejsou. A část rolí z knihovny tu není proto, že pracuje s obsahem, který ven
-nejde. Mechanika nadstaveb je popsaná
+V `agents/` je platformní knihovna celá, tedy všechny role, které se volají napříč
+jednotkami. Úplný výčet rolí to přesto není. Vedle knihovny běžně existují definice vázané
+na jednu jednotku nebo na jednoho tenanta: buď pojmenované nadstavby nad těmihle
+definicemi, nebo role, které vznikly pro jeden kontext a mimo něj nedávají smysl. Ty jsou
+lokální a v balíčku nejsou. Mechanika nadstaveb je popsaná
 v [`../docs/architektura-vrstev.md`](../docs/architektura-vrstev.md), sekce Platformní
 knihovna.
 

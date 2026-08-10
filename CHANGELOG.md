@@ -4,6 +4,18 @@ Formát podle [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/), verzová
 [Semantic Versioning](https://semver.org/lang/cs/). Tenhle soubor má vlastní řadu čísel:
 počítá změny balíčku, ne změny platformy.
 
+## [1.2.0] - 2026-08-10
+
+### Přidáno
+
+- Definice role, kterou vydání 1.1.0 vyřadilo celou, je v `knihovna/agents/` zpátky.
+  Platformní knihovna je tím v balíčku kompletní.
+
+### Změněno
+
+- `knihovna/README.md` a `docs/hranice-baliku.md` už netvrdí, že část knihovny zůstala
+  doma. Doma zůstávají jen definice vázané na jednu jednotku nebo na jednoho tenanta.
+
 ## [1.1.0] - 2026-08-10
 
 ### Přidáno

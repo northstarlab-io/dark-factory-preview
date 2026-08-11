@@ -36,7 +36,8 @@ počty, jmenné seznamy a mapu citlivého, tedy přesně to, co balíček nemá 
 **Balíček vznikl vydělením, ne klonem.** Klon by přinesl celou historii včetně klientské
 stopy v každém starším commitu; začernění v posledním stavu s tím nic neudělá. Git se
 zakládal až nad obsahem, který prošel verifikací, takže neočištěný stav v historii nikdy
-neexistoval. Proto `git log` ukazuje jediný commit a proto je to napsané rovnou v úvodu.
+neexistoval. Proto `git log` začíná až prvním vydáním balíčku a nic staršího v něm není;
+další commity jsou už jen jeho vlastní vydání. Proto je to napsané rovnou v úvodu.
 
 **Inventura našla tři třídy, které stavební plán vůbec neměl.** První: identifikátory naší
 znalostní vrstvy v souborech, které strojová klasifikace vedla jako čisté; kvůli nim
@@ -55,8 +56,10 @@ dalších 14 oprav a 6 zamítnutí.
 
 ## Kde do toho vstoupil člověk
 
-Rozhodl, co jde ven. To je jediné místo v celém systému, které se neplánuje odstranit,
-a tenhle případ ukazuje proč: **obor zákazníka se do textu vrátil oklikou dvakrát** a člověk
+Rozhodl, co jde ven. To je první ze šesti míst, ze kterých se člověk neplánuje odstranit
+(výčet je v [`docs/CO-JE-DARK-FACTORY.md`](../CO-JE-DARK-FACTORY.md), sekce „Kde zůstává
+člověk"), a tenhle případ ukazuje proč: **obor zákazníka se do textu vrátil oklikou
+dvakrát** a člověk
 ho oba dny vrátil zpátky. Nešlo o neposlušnost, šlo o to, že se ta informace neskládá
 z jedné věty a lupa hledá věty.
 
@@ -110,9 +113,10 @@ jestli je celý.
 
 ## Kde si to v tomhle balíčku ověříš
 
-- `git log` - jeden commit. Důvod je v [`docs/CO-JE-DARK-FACTORY.md`](../CO-JE-DARK-FACTORY.md),
-  sekce „Co dnes nefunguje", bod 1.
-- [`docs/hranice-baliku.md`](../hranice-baliku.md) - co tu běží, co je jen ke čtení a šest
+- `git log` - historie začíná prvním vydáním balíčku, nic staršího v ní není. Důvod je
+  v [`docs/CO-JE-DARK-FACTORY.md`](../CO-JE-DARK-FACTORY.md), sekce „Co dnes nefunguje",
+  bod 1.
+- [`docs/hranice-baliku.md`](../hranice-baliku.md) - co tu běží, co je jen ke čtení a sedm
   věcí, které tu vědomě chybí, včetně poznámky o chybových řádcích ve frontě.
 - `operations/ukazky/` - zachycené výstupy nástrojů i s hlavičkou, která říká, jak se čtou
   a co se v nich smí rozejít s živým během.

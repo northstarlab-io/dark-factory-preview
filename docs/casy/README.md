@@ -5,6 +5,10 @@ Pět reálných incidentů z provozu. Žádný z nich není postavený kvůli t�
 o vadu na naší straně a pátý je vada, kterou jsme si sami napsali do dokumentu, který
 před ní varuje.
 
+Tahle složka je nejspodnější patro dokumentace: doklad pod pravidly, ne jejich výklad.
+Pravidla samotná stojí v [`../normy.md`](../normy.md) a u OR-05, OR-10 a OR-12 vede odkaz
+sem přímo od textu normy.
+
 Každý case má stejnou stavbu: **co se stalo**, **jak se to projevilo**, **co to stálo**,
 **co se z toho stalo za pravidlo**, **jak se to hlídá dnes** a **co na tom pořád není
 dořešené**. Poslední oddíl je tam schválně u každého - pravidlo bez zbytkového rizika
@@ -38,3 +42,10 @@ v předmětu: tady jsou **incidenty platformy samotné**, tedy co se pokazilo uv
 a jak se to našlo. Tam jsou **projekty, na kterých se pracovalo**: co se zadalo, jak se
 práce rozdělila, kde vstoupil člověk a co z toho vzniklo. Pravidla anonymizace platí pro
 obě řady stejně.
+
+## Kam odsud dál
+
+Nahoru: [`../normy.md`](../normy.md) pro pravidla, která z těchhle pěti incidentů vznikla,
+a [`../architektura-vrstev.md`](../architektura-vrstev.md) pro stavbu, které se týkají.
+Na stejné úrovni: [`../pripady-pouziti/`](../pripady-pouziti/README.md). Úplně zpátky na
+začátek vede [`../CO-JE-DARK-FACTORY.md`](../CO-JE-DARK-FACTORY.md).

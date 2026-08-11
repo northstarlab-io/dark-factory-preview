@@ -5,6 +5,9 @@ je jen to, co v něm běží zeleně.** Všechno ostatní se popíše, a to pops
 informace - věta „u nás tahle brána běží při každém commitu, tady ji nespustíš, protože
 potřebuje korpus, který v balíčku není" je poctivější než skript, který ti selže.
 
+Z patra mechanismů je tohle jediný text, který mluví o balíčku, ne o platformě. Když
+kdekoli jinde narazíš na větu „tohle si tu nespustíš", vysvětlení je vždycky tady.
+
 ## Co běží
 
 | Věc | Příkaz | Naměřeno 9. 8. 2026 |
@@ -27,7 +30,10 @@ znovu; příkaz je v hlavičce každého souboru, takže si je můžeš přehrá
    neaktivují.
 2. **Validátor platformy tu neběží, jen `--help`.** Vypíše kontrakt kontrol generovaný
    z hlavičky vlastního skriptu, takže se s ním nemůže rozejít. Měřit nemá nad čím -
-   chybí mu knihovna definic a evidence, nad kterou počítá.
+   chybí mu knihovna definic a evidence, nad kterou počítá. Ze stejného důvodu tu není
+   ani generátor indexu platformy: index je otisk plochy, kterou balíček nemá celou,
+   takže by tu vyrobil otisk něčeho jiného. Mechanismus popisuje
+   [`architektura-vrstev.md`](architektura-vrstev.md), sekce Index platformy.
 3. **Z testové sady jsou tu dva testy.** Zbytek je vázaný na plný korpus changesetů nebo
    na kořen zdrojového projektu. Pět červených testů je horší vizitka než dva zelené
    a jedna věta.
@@ -55,6 +61,20 @@ Obě řady případů, [`casy/`](casy/README.md) i [`pripady-pouziti/`](pripady-
 píšou u každého tvrzení, kde si ho v repu ověříš. Když ověřit nejde, je to tam napsané rovnou
 a důvod je v tomhle soupisu.
 
+## Co ven nejde jménem
+
+Hranice nevede u výskytu jednotek, ale u toho, čí je ta informace. **Páteř platformy jde
+jménem** a je v [`mapa-projektu.md`](mapa-projektu.md), protože její názvy neprozrazují nic
+než samy sebe. **Jména zákazníků a spolupracovníků, jména jednotek, které je nesou v názvu,
+a rozsah portfolia ven nejdou vůbec**, a to ani jako počet: k mechanismu nepřidávají nic
+a z podstatné části to nejsou naše údaje. Totéž platí pro obsah osobní vrstvy a pro jmenný
+výčet pilířů znalostní báze - proč zrovna u pilířů, rozvádí
+[`datove-vrstvy.md`](datove-vrstvy.md), sekce „Co tu vědomě není".
+
+Nejzrádnější třída je odvozený počet: věta, ve které číslo ani nestojí, a čtenář si ho
+dopočítá. Jak se to hledalo a co se přitom našlo, je
+v [`pripady-pouziti/04-tenhle-balicek.md`](pripady-pouziti/04-tenhle-balicek.md).
+
 ## Co si můžeš vzít a použít zítra
 
 Čtyři věci, které si člověk s vlastní procesní bází v Gitu obvykle nepostaví, dokud ho to
@@ -74,5 +94,14 @@ domov těch souborů zůstal u nás.
 
 V kořeni tohohle repa schválně **není `CLAUDE.md`**. Kdyby tu byl, stal by se ti při
 otevření repa v Claude Code instrukcí projektu, a to je tichý zásah do cizího prostředí.
-Znění norem je proto ke čtení v `docs/normy.md`. Reálný `CLAUDE.md` uvidíš tam, kde patří:
-v `ukazka-jednotky/`, kde je artefaktem systému, ne příkazem tobě.
+Znění norem je proto ke čtení v [`normy.md`](normy.md). Reálný `CLAUDE.md` uvidíš tam, kde
+patří: v [`ukazka-jednotky/`](../ukazka-jednotky/CLAUDE.md), kde je artefaktem systému, ne
+příkazem tobě.
+
+## Kam odsud dál
+
+Příkazy z první tabulky si projdeš v pořadí a s výkladem v [`PROHLIDKA.md`](PROHLIDKA.md).
+Proč balíček vznikl vydělením a ne klonem a co se přitom měřilo, rozepisuje
+[`pripady-pouziti/04-tenhle-balicek.md`](pripady-pouziti/04-tenhle-balicek.md). Soubory,
+kterých se ta hranice týká, jsou v [`scaffold/`](../scaffold/README.md),
+[`knihovna/`](../knihovna/README.md) a [`operations/`](../operations/README.md).

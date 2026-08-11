@@ -36,7 +36,7 @@ Fronta nepřevzatých (5):
     Testy: 2 PASS, 0 FAIL, 0 nezjištěno, 1 mimo profil
   2026-08-07-aging-gate-planovace (osa A, dosah: runtime-pull, běžná)
     Denní i týdenní plánovač teď starou položku nepovažuje za urgentní jen proto, že je stará, a zeptá se, jestli ještě platí.
-    Akce: Žádná. Skilly jsou osobní vrstva Stanislava, jednotky je nekonzumují.
+    Akce: Žádná. Jde o skilly osobní vrstvy, jednotky je nekonzumují.
     Testy: 0 PASS, 2 FAIL, 0 nezjištěno, 0 mimo profil
   2026-08-07-panos-foundation-smycka (osa A, dosah: runtime-pull, běžná)
     Panoš přestal do každé nové definice psát cestu k Foundation, která neexistuje, takže se ta chyba dál nerozsévá.

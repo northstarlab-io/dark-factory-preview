@@ -3,6 +3,10 @@
 Platformní knihovna: to, co si session načítá. `agents/` jsou definice rolí, `foundation/`
 metodické soubory, na které definice odkazují, `skills/` workflow postupy volané v turnu.
 
+Jsi v patře souborů, tedy nejhlouběji, kam dokumentace vede. Nejlevnější cesta dovnitř je
+druhá zastávka v [`../docs/PROHLIDKA.md`](../docs/PROHLIDKA.md): jedna dvojice definic
+a hranice mezi nimi, přečtená z obou stran, zabere dvě minuty.
+
 ## Seznam rolí není úplný
 
 V `agents/` je platformní knihovna celá, tedy všechny role, které se volají napříč
@@ -59,3 +63,11 @@ které máme připojené my. Co nemáš, škrtni, zbytek funguje.
 
 Odkazy na dokumenty, které v balíčku nejsou, jsou ponechané schválně: ukazují, kde ten
 fakt bydlí.
+
+## Kam odsud dál
+
+Nahoru vede [`../docs/architektura-vrstev.md`](../docs/architektura-vrstev.md), sekce
+Platformní knihovna: jak se dělá lokální odchylka, kdy je to fork a jak se sada dostane na
+stroj, který nespravujeme. Pravidlo, že si role vlastní definici nepřepisuje, je OR-09
+v [`../docs/normy.md`](../docs/normy.md), a co s definicemi udělá tvoje prostředí, stojí
+v [`../docs/hranice-baliku.md`](../docs/hranice-baliku.md).

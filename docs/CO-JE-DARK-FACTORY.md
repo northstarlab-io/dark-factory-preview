@@ -2,7 +2,7 @@
 
 Způsob, jak provozovat práci s agenty tak, aby držela i ve chvíli, kdy u ní nesedíš. Prakticky je to šablona jednotky, definice rolí, zapsané normy a brány, které ty normy vynucují strojem.
 
-Tenhle text vysvětluje. Když chceš rovnou vidět soubory, jdi na [PROHLIDKA.md](PROHLIDKA.md).
+Tenhle text stojí v balíčku nejvýš a jen vysvětluje: nepředpokládá nic přečteného a dá se z něj sejít kamkoli níž. Když chceš rovnou vidět soubory, jdi na [PROHLIDKA.md](PROHLIDKA.md); když chceš vidět, z čeho se ten ekosystém skládá, na [mapa-projektu.md](mapa-projektu.md). Patro pod tímhle textem jsou mechanismy a odkazy na ně jsou průběžně v textu i shrnuté na konci.
 
 ## Problém
 
@@ -17,7 +17,7 @@ Nejtěžší na tom není napsat agenta. Těžká je tahle druhá fáze: kolize,
 
 ## Jak to řeší
 
-**Jednotka je atom.** Jedna oblast nebo jeden problém = jeden projekt s vlastním `CLAUDE.md` a složkou `operations/`. Každá jednotka o sobě povinně hlásí stav v hlavičce `operations/status.md`: sedm polí v pevném tvaru, mezi nimi klasifikace, fáze, zdraví a to, komu jednotka slouží. Hlavička je strojově čitelná, takže stav portfolia se nesbírá dotazováním, ale čte ze souborů, které existují stejně v každé jednotce.
+**Jednotka je atom.** Jedna oblast nebo jeden problém = jeden projekt s vlastním `CLAUDE.md` a složkou `operations/`. Každá jednotka o sobě povinně hlásí stav v hlavičce `operations/status.md`: devět polí v pevném tvaru, mezi nimi klasifikace, fáze, zdraví a to, komu jednotka slouží. Sedm z nich validátor vyžaduje tvrdě, u nejnovějšího zatím jen varuje, dokud se nedoplní všude, a vůči poli s typem práce je slepý schválně. Hlavička je strojově čitelná, takže stav portfolia se nesbírá dotazováním, ale čte ze souborů, které existují stejně v každé jednotce.
 
 **Role je kontrakt, ne prompt.** Definice popisuje doménu, hranice vůči sousedním rolím, železná pravidla a anti-patterny. Většina textu neřeší, co má role dělat, ale kde přestává a komu to předává. Vzniká postupem: kompetenční mapa nejdřív, persona až potom, jméno schvaluje člověk. A agent svou vlastní definici needituje - zlepšení navrhuje, zapisuje ho jiná role po lidském schválení. Bez téhle hranice nejde odlišit záměr od nánosu. Co se z provozu sbírá, jak se z poznatku stane pravidlo a co se přitom neučí samo, je v [uceni-a-zavedeni.md](uceni-a-zavedeni.md).
 
@@ -48,7 +48,7 @@ Jak to vypadá na konkrétní práci, ukazují čtyři případy v [pripady-pouz
 ## Co z toho běží dnes
 
 - **Engine se spouští při běžné práci** a nevznikl kvůli téhle prohlídce. Validátory, hooky a šablona jsou soubory z provozu; v balíčku si je můžeš spustit nad přiloženou ukázkovou jednotkou.
-- **Evidence propagace běží od 3. srpna 2026.** Za prvních sedm dní vzniklo pětašedesát lístků. Třináct z nich, celý týden 3. až 9. 8., je v `operations/changesets/` i s jejich strojovými testy.
+- **Evidence propagace běží od 3. srpna 2026.** Za prvních sedm dní vzniklo pětašedesát lístků. Třináct z nich, vybraných napříč celým týdnem 3. až 9. 8., je v `operations/changesets/` i s jejich strojovými testy.
 - **Jednotky založené z téhle šablony běží nad reálnou prací.** Ta v balíčku je prázdný výsledek zkopírování šablony, aby bylo na čem spustit validátor.
 - **U platícího zákazníka dnes běží software v ostrém provozu a aktualizuje se vydáním.** Zákazník ani jeho obor tu jmenovaný není a nebude.
 - **Číslo verze platformy v tomhle textu schválně není.** Čte se ze `scaffold/VERSION` a hlídá to samostatná kontrola validátoru, protože živé číslo napsané rukou zestárne dřív, než ho někdo přečte. Tenhle balíček má vlastní číslo v `VERSION` a je to jiná osa; vysvětlení je v [mapa-verzi.md](mapa-verzi.md).
@@ -63,14 +63,16 @@ Záměrem, tedy ne hotovou věcí, zůstává: automatická integrace, měřená
 4. **Ruční synchronizace čísla selhala pokaždé.** Verze platformy zamrzla v kopiích v několika jednotkách. Dokument, který přesně před tímhle varuje, sám nesl číslo o tři vydání pozadu, protože ho tam někdo napsal rukou.
 5. **Testy se pouštějí rukou.** Scénáře nad mechanikou propagace existují a běží před commitem; server, který by je spustil za člověka, není.
 6. **Kvalita se zatím měří tím, na co se člověk zeptá.** Metrika je zavedená a slepé srovnání běží, ale do jeho vyhodnocení je volba modelu pro úlohu informovaný odhad.
+7. **Smyčka učení stojí, přestože je postavená celá.** Sběr, týdenní předfiltr, lidská brána i zápis existují jako postup, ale za tři měsíce jimi neprošel do pravidla ani jeden poznatek a jeden ze sběrných kanálů se sám zastavil pod vlastním prahem. Rozepsané v [uceni-a-zavedeni.md](uceni-a-zavedeni.md), část A; návrh, co s tím, v [koncept-autonomie.md](koncept-autonomie.md).
 
 ## Kde zůstává člověk
 
 Na šesti místech a žádné z nich se neplánuje odstranit: rozhodnutí, co jde ven; akceptace výstupu; jméno nové role; zapnutí bran na konkrétním stroji; jakákoli komunikace s druhou stranou; a zápis poznatku z provozu do definice role. To poslední místo je nejméně samozřejmé a má vlastní text: [uceni-a-zavedeni.md](uceni-a-zavedeni.md). Autonomní továrna to není. Je to továrna s jedním člověkem v bráně a hodně mechaniky za ní.
 
-## Osm pojmů
+## Devět pojmů
 
 - **Jednotka.** Jeden projekt s vlastním `CLAUDE.md` a složkou `operations/`. Atom systému; všechno ostatní je buď uvnitř jednotky, nebo mezi jednotkami.
+- **Role a agent.** Role je zapsaný kontrakt, tedy soubor v knihovně. Agent je její běh v session. Texty tady ten rozdíl drží: rozvíjí se role, chybu udělá agent. Adresář se jmenuje `.claude/agents/`, protože ho tak čte nástroj.
 - **Vrstva.** Čtyři vrstvy dělené podle toho, kdo obsah spravuje, ne podle toho, kde leží na disku: osobní kontext držitele účtu, platforma, tenant, jednotka. Jedna složka může nést dvě vrstvy a je to vědomé.
 - **Orchestrátor a specialista.** Orchestrátor zadává a koordinuje, specialista dělá práci ve své doméně. Jestli session roli převezme, nebo ji zavolá jako subagenta, má technické důsledky; stylová volba to není.
 - **Norma.** Zapsané rozhodnutí ve tvaru pravidlo, proč, test a incident, který ho odhalil. Architektonická rozhodnutí (AR) říkají, jak je systém postavený, provozní normy (OR) říkají, jak se v něm pracuje.
@@ -78,6 +80,21 @@ Na šesti místech a žádné z nich se neplánuje odstranit: rozhodnutí, co jd
 - **Changeset a baseline.** Changeset je lístek k jedné změně platformy s lidskou větou a testem, jak se pozná převzetí. Baseline je evidence jedné jednotky o tom, co převzala; zapisuje do ní výhradně nástroj a jen po průchodu testem.
 - **Brána.** Mechanická kontrola, která je fail-closed: co nejde vyhodnotit, neprojde. Kdo ji obejde, zanechá po sobě stopu, kterou najde příští běh.
 - **Scaffold a seam.** Scaffold je šablona jednotky jako verzovaný artefakt. Seam je deklarace, které cesty smí upgrade přepsat a které jsou data jednotky, kterých se nikdy nedotkne.
+
+## Kam odsud dál
+
+Zbytek big picture jsou dva texty: [PROHLIDKA.md](PROHLIDKA.md) tě provede repem po pěti místech a [mapa-projektu.md](mapa-projektu.md) ukáže, z jakých projektů se ekosystém skládá.
+
+Patro níž jsou mechanismy, každý na jednu otázku. Pořadí je doporučené, ne povinné, a žádný z nich nepředpokládá ten předchozí:
+
+- [architektura-vrstev.md](architektura-vrstev.md) - jak je to postavené: čtyři vrstvy, jednotka jako atom, knihovna rolí, distribuce na stroj, který nespravujeme.
+- [normy.md](normy.md) - dvanáct pravidel, kterými se v tom systému pracuje, u každého incident, kterým vzniklo.
+- [datove-vrstvy.md](datove-vrstvy.md) - kde data bydlí a podle čeho se rozhoduje, kam co patří.
+- [uceni-a-zavedeni.md](uceni-a-zavedeni.md) - co se z provozu sbírá samo, kde je člověk povinně v cyklu a jak se to zavádí u lidí.
+- [mapa-verzi.md](mapa-verzi.md) - které číslo je které a proč jich je víc než jedno.
+- [hranice-baliku.md](hranice-baliku.md) - co si tady spustíš, co je jen ke čtení a co tu vědomě chybí.
+
+Ještě níž jsou důkazy: [casy/](casy/README.md) a [pripady-pouziti/](pripady-pouziti/README.md), a k nim soubory samotné v [knihovna/](../knihovna/README.md) a [scaffold/](../scaffold/README.md). Stranou od obojího stojí [koncept-autonomie.md](koncept-autonomie.md), návrh, kam by se to mělo posunout dál. Do tohohle textu schválně nepatří: popisuje záměr, ne stav, a míchat obojí do jednoho obrázku je přesně to, po čem se dokumentaci přestane věřit.
 
 ## Kdyby tě to zajímalo dál
 

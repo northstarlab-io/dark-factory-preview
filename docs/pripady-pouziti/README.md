@@ -5,6 +5,10 @@
 a jak se to našlo), tahle složka popisuje **projekty, na kterých se pracovalo** (co se
 zadalo, kdo co dělal a co z toho vzniklo).
 
+Obojí je nejspodnější patro dokumentace, tedy důkazy pod mechanismy. Když chceš nejdřív
+vědět, o čem ten systém je, začni [`../CO-JE-DARK-FACTORY.md`](../CO-JE-DARK-FACTORY.md);
+tyhle čtyři texty se dají číst i bez toho, jen budou hustší.
+
 | # | Případ | O čem to je |
 |---|---|---|
 | 1 | [Sada rolí nasazená u zákazníka](01-nasazeni-u-zakaznika.md) | Ruční kopie definic na cizím stroji převedené na vydávanou sadu, kterou lze aktualizovat |
@@ -20,8 +24,9 @@ vyšlo, se čte za tři minuty a nedá se z něj nic použít.
 ## Co je anonymizované
 
 Zákazník je v případu 1 „zákazník" a zůstane jím: žádné jméno firmy ani osoby, žádný název
-jeho systému a žádný obor. Popsaný je **typ práce**, ne typ firmy. Ven nejdou ani jména
-a počty našich vlastních jednotek, protože rozsah portfolia k mechanismu nepřidává nic.
+jeho systému a žádný obor. Popsaný je **typ práce**, ne typ firmy. Ven nejde ani rozsah
+portfolia: počty našich vlastních jednotek tu nenajdeš a jménem jde jen páteř platformy,
+viz [`../mapa-projektu.md`](../mapa-projektu.md) a [`../hranice-baliku.md`](../hranice-baliku.md).
 
 Čísla, která popisují jeden případ, zůstávají: kolik nálezů našla verifikace, kolik jich
 bylo falešných, jak dlouho co běželo, kolikátý den se něco zjistilo. Bez nich by z případu
@@ -29,3 +34,10 @@ zbyla historka. Táž pravidla platí i pro druhou řadu, viz [`docs/casy/README
 
 Ke každému případu je připsané, **kde si tvrzení ověříš přímo v tomhle repu**. Kde ověřit
 nejde, protože ta věc v balíčku není, je to u toho napsané rovnou.
+
+## Kam odsud dál
+
+Nahoru: [`../mapa-projektu.md`](../mapa-projektu.md) zařazuje tyhle případy do kategorií
+byznysové vrstvy, [`../normy.md`](../normy.md) drží pravidla, o která se v nich opíráme,
+a [`../uceni-a-zavedeni.md`](../uceni-a-zavedeni.md) skládá postup zavedení, který případ 1
+ukazuje na reálném nasazení. Na stejné úrovni stojí [`../casy/`](../casy/README.md).

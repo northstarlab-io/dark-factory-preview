@@ -4,6 +4,10 @@ Dvě otázky, na které se v balíčku dalo odpovědět jen po kusech: podle če
 mění, když se změní realita kolem něj, a jak se dostane k lidem ve firmě. Nic nového tu
 nepřibývá, jen se skládá to, co v balíčku leží, a u každé části je napsané, kde to nedrží.
 
+Patří do patra mechanismů a je z něj nejméně technický: nepopisuje jeden soubor ani jednu
+bránu, ale dvě smyčky vedoucí z platformy ven - jednu do vlastních definic rolí, druhou
+k lidem ve firmě.
+
 ## A. Co se z provozu učí a co se neučí samo
 
 Krátká odpověď dopředu: **sběr a návrhy jsou zautomatizované, zápis do definice role dělá
@@ -42,7 +46,9 @@ ne. Konfigurace, která se aktivuje sama, je od driftu nerozeznatelná.
 (`knihovna/skills/methodology-promote/SKILL.md`), rozhodnutí člověka, zápis do definice,
 který dělá jiná role než ta dotčená.
 
-Z těch čtyř kroků jsou v balíčku k přečtení poslední dva. Záznam AP-003 a jeho revize
+Postup je v balíčku u všech čtyř kroků, doložený průchod jen u posledních dvou. První dva
+kroky si přečteš jako skill v tabulce výše; co po nich zbylo v provozu, tu není. Poslední
+dva jsou vidět na výsledku: záznam AP-003 a jeho revize
 ze 7. srpna 2026 v `knihovna/foundation/anti-patterns-catalog.md`: původní pravidlo
 zakázalo orchestrátorovi celou exekuci, provoz ukázal, že řez byl moc široký a skutečná
 vada byla jinde, tak se pravidlo změnilo a v definici role je vidět z druhé strany
@@ -72,6 +78,10 @@ Odpověď na otázku, jestli to sleduje, jak se ve firmě reálně žije, a upra
 popisy, je proto **částečně ano a částečně vědomě ne.** Ano ve sběru: co selhalo, co se
 opakuje, co si člověk poznamenal, co která jednotka nepřevzala. Ne v zápisu: popis role
 mění člověk. A ne v dosahu: měří se práce systému, ne to, co se ve firmě kolem něj děje.
+
+Kam to míří: jak tenhle stav dotáhnout do autonomního provozu a jakými cestami, rozepisuje
+[`koncept-autonomie.md`](koncept-autonomie.md). Je to budoucí koncept - směr, ne popis toho,
+co v balíčku běží.
 
 **Kde si to ověříš:** pět souborů z tabulky výše; [`normy.md`](normy.md) OR-09 a OR-10;
 [`datove-vrstvy.md`](datove-vrstvy.md), sekce „Kde to dnes drhne", bod 2;
@@ -136,3 +146,12 @@ selhání s prahem tří výskytů. Obojí je jedna věta a jeden soubor. Vázan
 propagace poznatku do definice, protože potřebuje evidenci převzetí a bránu, která ji
 vynutí. Kroky 1 až 4 z části B stojí na šabloně a validátoru, které v balíčku jsou; krok 5
 stojí na lidech. Co z balíčku nespustíš a proč, je v [`hranice-baliku.md`](hranice-baliku.md).
+
+## Kam odsud dál
+
+Obě pravidla, o která se to opírá, jsou OR-09 a OR-10 v [`normy.md`](normy.md). Týž postup
+zavedení na reálném nasazení včetně toho, co se v něm předělávalo, ukazuje
+[`pripady-pouziti/01-nasazeni-u-zakaznika.md`](pripady-pouziti/01-nasazeni-u-zakaznika.md).
+A návrh, jak by se stav popsaný v části A dal dotáhnout dál, je v samostatném
+[`koncept-autonomie.md`](koncept-autonomie.md): tři cesty na společných osách, s doporučením
+a s rozborem toho, čím to může selhat. Je to směr, ne popis toho, co dnes běží.

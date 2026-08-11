@@ -4,6 +4,10 @@ Engine platformy. Skripty, šablona jednotky a brány, které v provozu drží p
 místo dobré vůle. Nic z toho není ukázka postavená kvůli téhle prohlídce - jsou to
 soubory, které se spouští při běžné práci a při každém commitu.
 
+Jsi v patře souborů. Co ty soubory vynucují a proč zrovna tohle, je o patro výš
+v [`../docs/architektura-vrstev.md`](../docs/architektura-vrstev.md); provedení v pevném
+pořadí má první a pátá zastávka v [`../docs/PROHLIDKA.md`](../docs/PROHLIDKA.md).
+
 Co tu najdeš:
 
 - `validate.sh` - validátor jednotky (kontroluje strukturu a hlavičku `operations/status.md`)
@@ -25,6 +29,11 @@ by znamenalo sáhnout do enginu a udělat z balíčku fork, který příště ne
 proti zdroji. Cena za zachování je tenhle odstavec.
 
 **Co tu vědomě není:** instalátor bran, generátor indexu platformy, render tenantů,
-vrstva pracovního prostoru a zbytek testové sady. Důvody per položku jsou v
-`docs/hranice-baliku.md`; pravidlo je jednoduché - v balíčku je jen to, co v něm běží
-zeleně, zbytek se popíše.
+vrstva pracovního prostoru a zbytek testové sady. Důvody per položku jsou
+v [`../docs/hranice-baliku.md`](../docs/hranice-baliku.md); pravidlo je jednoduché - v balíčku
+je jen to, co v něm běží zeleně, zbytek se popíše.
+
+**Kam odsud dál.** Výsledek zkopírování šablony je [`../ukazka-jednotky/`](../ukazka-jednotky/CLAUDE.md).
+Pravidla, která tyhle brány vynucují, jsou v [`../docs/normy.md`](../docs/normy.md), zvlášť
+OR-03, OR-06 a OR-12. Lístky, nad kterými počítá režim `--baseline`, jsou
+v [`../operations/`](../operations/README.md).

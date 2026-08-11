@@ -9,7 +9,7 @@
 **Platforma:** 2.7.0
 **Týká se:** vše
 **Dosah:** runtime-pull
-**Akce konzumenta:** Žádná. Skilly jsou osobní vrstva Stanislava, jednotky je nekonzumují.
+**Akce konzumenta:** Žádná. Jde o skilly osobní vrstvy, jednotky je nekonzumují.
 
 ## Co se změnilo
 
@@ -17,7 +17,7 @@
 
 Změna vznikla v dřívější session a **ležela v pracovním stromu knihovny nezacommitovaná**. Odhalil ji Humble 6. 8. při přípravě re-renderu k tenantovi: dokud jsou v knihovně rozpracované soubory, každý render nese `library_dirty: true`, tedy původ, který nejde zopakovat ze samotného commitu. Tenant by si takovou evidenci uložil do manifestu a nikdo by ji později nedokázal ověřit.
 
-Vedle skillů ležel v témž stavu i `settings.json` se změnou modelu a effortu ze session. **Ten se nekomituje** - není to autorské rozhodnutí o výchozím tieru, je to stopa po jednorázovém přepnutí session, a vrátil se na `fable`/`xhigh` per rozhodnutí Stanislava ze 7. 8.
+Vedle skillů ležel v témž stavu i `settings.json` se změnou modelu a effortu ze session. **Ten se nekomituje** - není to autorské rozhodnutí o výchozím tieru, je to stopa po jednorázovém přepnutí session, a vrátil se na výchozí hodnoty per rozhodnutí ze 7. 8.
 
 ## Lidská věta
 

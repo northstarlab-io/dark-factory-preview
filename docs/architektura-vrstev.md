@@ -4,6 +4,11 @@ Systém je rozdělený podle jedné otázky: **kdo který obsah spravuje.** Ne p
 obsah leží na disku, a ne podle toho, komu patří projekt. Když se to dělí podle lokace,
 vypadá to na první pohled přehledněji a do měsíce nejde odpovědět, kdo smí co změnit.
 
+Tohle je patro mechanismů a je to nejhustší text v balíčku. Předpokládá, že máš za sebou
+[`CO-JE-DARK-FACTORY.md`](CO-JE-DARK-FACTORY.md), a odpovídá na otázku **jak je to
+postavené**, ne co to je. Pravidla, kterými se uvnitř té stavby pracuje, žijí vedle
+v [`normy.md`](normy.md).
+
 ## Čtyři vrstvy
 
 | Vrstva | Co spravuje | Kdo ji řídí |
@@ -308,7 +313,16 @@ A index není třetí osa propagace, je to evidence **plochy**, nad kterou obě 
 
 ## Kde je člověk
 
-Pět míst, ze kterých se člověk neplánuje odstranit, je vypsaných v
+Šest míst, ze kterých se člověk neplánuje odstranit, je vypsaných v
 [CO-JE-DARK-FACTORY.md](CO-JE-DARK-FACTORY.md), sekce „Kde zůstává člověk". Podruhé je
 sem nepíšu schválně: kanonický domov faktu je jeden a druhá kopie se od něj do měsíce
 odchýlí. Tenhle odkaz je zároveň nejlevnější ukázka toho pravidla v praxi.
+
+## Kam odsud dál
+
+Ve stejném patře stojí [`normy.md`](normy.md), tedy jak se v téhle stavbě pracuje,
+[`datove-vrstvy.md`](datove-vrstvy.md), tedy kam který obsah patří, a
+[`mapa-verzi.md`](mapa-verzi.md) pro čísla, která se tudy propisují. Patro níž jsou
+soubory samotné: [`knihovna/`](../knihovna/README.md) s definicemi rolí
+a [`scaffold/`](../scaffold/README.md) s enginem, šablonou a branami. Pět incidentů,
+ze kterých většina rozhodnutí na téhle stránce vznikla, je v [`casy/`](casy/README.md).

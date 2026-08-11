@@ -4,6 +4,10 @@ Dvanáct pravidel, kterými se řídí orchestrátoři a specialisté při běž
 zásady ani hodnoty. Každá norma vznikla z konkrétní chyby, má u sebe zapsané, z jaké,
 a u většiny z nich existuje mechanická kontrola, která ji hlídá místo pozornosti.
 
+Je to referenční text z patra mechanismů, takže se nečte odshora dolů, ale hledá se v něm.
+Když nevíš, na co se dívat nejdřív, vezmi tři normy z třetí zastávky
+v [`PROHLIDKA.md`](PROHLIDKA.md) a zbytek nech být.
+
 Tvar je u všech stejný: **pravidlo**, **proč** (co se stane, když se nedodrží),
 **test** (věta, kterou si agent položí sám) a **incident** (co se doopravdy stalo).
 Poslední pole je to, kvůli kterému normy nezůstávají teorií. Když u nějaké chybí, znamená
@@ -436,6 +440,15 @@ i regenerovaný index."
 
 **Incident.** Podrobně v [`casy/01-brana-kterou-nikdo-nespoustel.md`](casy/01-brana-kterou-nikdo-nespoustel.md).
 
-**Kde si mechanismus prohlédneš.** `operations/changesets/README.md` je kontrakt formátu,
-vedle něj leží třináct reálných lístků z jednoho týdne provozu. Frontu si spočítáš
+**Kde si mechanismus prohlédneš.** [`operations/`](../operations/README.md) drží kontrakt
+formátu a vedle něj třináct reálných lístků z jednoho týdne provozu. Frontu si spočítáš
 příkazem `bash scaffold/validate.sh --baseline ukazka-jednotky --line`.
+
+## Kam odsud dál
+
+Normy vznikaly z incidentů a pět z nich je rozepsaných celých v [`casy/`](casy/README.md);
+u OR-05, OR-10 a OR-12 vede odkaz přímo od textu normy. Stavbu, ve které tahle pravidla
+platí, popisuje [`architektura-vrstev.md`](architektura-vrstev.md). Jak se z poznatku
+z provozu stane nová norma a proč ten poslední krok dělá člověk, je
+v [`uceni-a-zavedeni.md`](uceni-a-zavedeni.md). Znění, které nese každá jednotka u sebe,
+je zkrácený výtah v [`ukazka-jednotky/CLAUDE.md`](../ukazka-jednotky/CLAUDE.md).

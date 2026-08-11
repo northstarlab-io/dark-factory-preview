@@ -7,6 +7,10 @@ definici role. Špatně je jenom to, když nikde není napsané, které číslo 
 Tenhle dokument je ta jedna stránka. Odpovídá na čtyři otázky: **jaká čísla existují, co
 znamenají, kam se propisují a kam se vědomě nepropisují.**
 
+Patří do patra mechanismů a je z nich nejužší: řeší jednu věc a nepředpokládá nic
+přečteného. Motor, který ta čísla rozváží, popisuje
+[`architektura-vrstev.md`](architektura-vrstev.md) v sekci o propagaci změn.
+
 **Co z mapy uvidíš v tomhle balíčku.** Osa platformy je tu celá, protože její zdroj
 i evidence jsou přiložené a příkazy níž se dají spustit. Osa vydávaného softwaru a osa
 vlastních nástrojů bydlí v repozitářích, které v balíčku nejsou; jsou tu popsané jednou
@@ -194,3 +198,11 @@ způsob, jak si ho přeměřit, aby se nedalo spolehnout na text, který mezití
 
 Uzavřené od minula, ať je vidět, že se výčet zkracuje: kořenové soubory s číslem ve třech
 jednotkách jsou pryč a nástroj, o kterém tenhle dokument tvrdil, že nemá tag, ho mezitím má.
+
+## Kam odsud dál
+
+Mechanismus, který ta čísla rozváží, popisuje
+[`architektura-vrstev.md`](architektura-vrstev.md) v sekci o propagaci změn; jako pravidlo
+je to OR-12 v [`normy.md`](normy.md). Incident, ze kterého celý tenhle dokument vznikl, je
+[`casy/05-cislo-verze-psane-rukou.md`](casy/05-cislo-verze-psane-rukou.md). Lístky
+a evidenci, o kterých je tu řeč, si prohlédneš v [`operations/`](../operations/README.md).

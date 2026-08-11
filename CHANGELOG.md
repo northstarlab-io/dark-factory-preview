@@ -4,6 +4,26 @@ Formát podle [Keep a Changelog](https://keepachangelog.com/cs/1.1.0/), verzová
 [Semantic Versioning](https://semver.org/lang/cs/). Tenhle soubor má vlastní řadu čísel:
 počítá změny balíčku, ne změny platformy.
 
+## [1.4.0] - 2026-08-11
+
+### Přidáno
+
+- `docs/koncept-autonomie.md` - návrhový koncept self-learning, self-healing
+  a self-updating mechanismů: inventura toho, co běží a co se tiše zastavilo,
+  tři varianty architektury s trade-offs (poznatek jako lístek, nejdřív měřidlo,
+  paměť místo pravidel) a doporučené pořadí kroků. Směr a názor autora, ne popis
+  toho, co běží; vznikl s oponenturou, která shodila dva nosné prvky draftu.
+- Nová role v knihovně: architekt konceptů a smyček agentní platformy.
+
+### Změněno
+
+- Dokumentace má čtyřpatrovou strukturu: vstup, big picture, mechanismy, důkazy
+  a soubory. Každý dokument nahoře říká, kam patří, a dole, kam se jde hlouběji.
+- Konzistenční sweep opravil patnáct sporů mezi dokumenty (počet míst člověka,
+  počet hooků, tvar hlavičky jednotky, tvrzení o git historii a další) - pravdu
+  určoval soubor blíž zdroji.
+- Odhad času na big picture v README srovnán s měřením skutečného průchodu.
+
 ## [1.3.0] - 2026-08-10
 
 ### Přidáno

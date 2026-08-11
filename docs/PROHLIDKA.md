@@ -2,7 +2,7 @@
 
 Pět míst v repu v pevném pořadí, zhruba patnáct minut. Nemusíš nic spouštět; příkazy jsou u toho pro případ, že chceš. Pořadí jde od věci, kterou si umíš představit, k té, na které to celé stojí: atom, role, doktrína, propagace, brána.
 
-Pojmy, o které cestou zakopneš, jsou vysvětlené v [CO-JE-DARK-FACTORY.md](CO-JE-DARK-FACTORY.md).
+Tenhle text stojí vedle [CO-JE-DARK-FACTORY.md](CO-JE-DARK-FACTORY.md) a je jeho praktická půlka: tam se to vysvětluje, tady se to ukazuje na souborech. Pojmy, o které cestou zakopneš, jsou vysvětlené tam. Hlouběji než sem vedou odkazy až na konci, aby ti pořadí zastávek nikdo nerozbil.
 
 Všech pět zastávek ukazuje mechanismus, tedy soubor, který něco vynucuje. Práci, kterou ten
 mechanismus obsluhuje, tady schválně nenajdeš; ta je popsaná ve čtyřech případech
@@ -12,7 +12,7 @@ v [pripady-pouziti/](pripady-pouziti/README.md) a čte se samostatně, bez pořa
 
 `scaffold/studio-template/` a `ukazka-jednotky/operations/status.md`
 
-**Co tady uvidíš.** Kostru, ze které vzniká nová jednotka, a hlavičku, kterou každá jednotka povinně vyplní: sedm polí v pevném tvaru, mezi nimi klasifikace, fáze, zdraví a to, komu jednotka slouží. Tři runbooky jsou v šabloně od začátku, ne až když je potřeba.
+**Co tady uvidíš.** Kostru, ze které vzniká nová jednotka, a hlavičku, kterou každá jednotka povinně vyplní: devět polí v pevném tvaru, mezi nimi klasifikace, fáze, zdraví a to, komu jednotka slouží. Ve výpisu validátoru uvidíš sedm z nich pohromadě a nejnovější pole zvlášť - u něj brána zatím jen varuje, dokud se nedoplní všude. Tři runbooky jsou v šabloně od začátku, ne až když je potřeba.
 
 **Co z toho plyne.** Stav portfolia se nesbírá dotazováním, čte se ze souborů, které vypadají stejně v každé jednotce. Ověřit to jde za vteřinu: `bash scaffold/validate.sh ukazka-jednotky`.
 
@@ -56,13 +56,23 @@ Když si příkaz pustíš, čekej u většiny lístků `FAIL`, ne `PASS`: jejic
 
 Nejostřejší věc na konec: strojový sken přístupových údajů z konstrukce nevidí jméno klienta, hledá tvary tokenů. Při přípravě tohohle balíčku byl sken čistý a ruční audit našel jméno klienta ve víc než stovce souborů. Proto tu není historie. Zbytek toho, co dnes nefunguje, je v sekci Co dnes nefunguje v [CO-JE-DARK-FACTORY.md](CO-JE-DARK-FACTORY.md).
 
-Odsud vedou cesty dál, žádná z nich není zastávka, protože se u nich nic nespouští:
+Odsud vedou cesty dál, žádná z nich není zastávka, protože se u nich nic nespouští. Nejdřív poslední kus big picture:
 
 - [mapa-projektu.md](mapa-projektu.md) - z jakých projektů se to skládá a co má který na starosti; páteř jmenovitě, byznysová vrstva po kategoriích.
 
-- [casy/](casy/README.md) - pět incidentů platformy rozepsaných i s tím, co se po nich změnilo v mechanismu.
-- [pripady-pouziti/](pripady-pouziti/README.md) - čtyři případy práce z reálných projektů: co se zadalo, co odvedla agentní vrstva, kde vstoupil člověk a co se v tom předělávalo.
+Pak mechanismy, každý na jednu otázku a v libovolném pořadí:
+
+- [architektura-vrstev.md](architektura-vrstev.md) - čtyři vrstvy podle správy, jednotka jako atom, knihovna rolí a to, jak se sada dostane na stroj, který nespravujeme.
+- [normy.md](normy.md) - plné znění dvanácti norem, na které se dívala třetí zastávka.
 - [datove-vrstvy.md](datove-vrstvy.md) - kde data bydlí a podle čeho se rozhoduje, kam co patří; zavedená podoba PARA a čtyři místa, kde to dnes drhne.
 - [uceni-a-zavedeni.md](uceni-a-zavedeni.md) - co se z provozu sbírá samo, proč zápis do definice role dělá člověk, a šest kroků od zadání k tomu, že to tým používá.
+- [mapa-verzi.md](mapa-verzi.md) - čtyři nezávislé řady čísel a příkazy, kterými si dnešní hodnoty přečteš místo toho, aby ti je někdo napsal do věty.
+- [hranice-baliku.md](hranice-baliku.md) - naměřený soupis toho, co tu běží zeleně, a sedm věcí, které tu vědomě chybí.
+
+Nakonec důkazy, u kterých nejde o mechanismus, ale o to, jak dopadl:
+
+- [casy/](casy/README.md) - pět incidentů platformy rozepsaných i s tím, co se po nich změnilo v mechanismu.
+- [pripady-pouziti/](pripady-pouziti/README.md) - čtyři případy práce z reálných projektů: co se zadalo, co odvedla agentní vrstva, kde vstoupil člověk a co se v tom předělávalo.
+- [koncept-autonomie.md](koncept-autonomie.md) - kam by se to mělo posunout dál. Návrh a názor autora, ne popis toho, co v balíčku běží; čti ho až po tom, co víš, co běží dnes.
 
 Když tě zaujal konkrétní mechanismus, napiš mi který (adresa je v [NOTICE.md](../NOTICE.md)). Sednout si nad jednou věcí, která ti dnes chybí, je užitečnější než nad celým systémem. A když ti u některé zastávky přijde, že je to postavené špatně, ozvi se s tím taky; kvůli tomu si to ukazujeme.

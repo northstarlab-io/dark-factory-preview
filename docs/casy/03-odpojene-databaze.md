@@ -51,9 +51,10 @@ udělá.
 ## Jak se to hlídá dnes
 
 Nehlídá to stroj a je poctivé to napsat rovnou. Je to postupová norma, kterou vynucuje
-disciplína a kontrola po sérii, ne brána. Ze všech pěti casů je tenhle jediný, kde se
-z pravidla nestala mechanická kontrola, protože soupis potomků umí jen ten nástroj, který
-pro to má rozhraní, a ne každý ho má.
+disciplína a kontrola po sérii, ne brána. Ze všech pěti casů jsou takové dva - tenhle
+a [`04-omezeni-ktere-nezaniklo.md`](04-omezeni-ktere-nezaniklo.md) - a v obou je to vědomé.
+Tady proto, že soupis potomků umí jen ten nástroj, který pro to má rozhraní, a ne každý
+ho má.
 
 Jedinou tvrdou oporou je hranice práv: v prostředí, které nevlastníme, agent destruktivní
 akci sám spustit nemůže, takže krok „člověk spouští" nevynucuje text, ale oprávnění.

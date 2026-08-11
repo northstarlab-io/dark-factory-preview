@@ -5,6 +5,10 @@ jedné a vyplatí se je držet oddělené: **jakého typu ten obsah je** (kdo je
 a **v jaké je fázi** (pracuje se na něm, nebo už platí). První rozhoduje o médiu, druhá o
 umístění uvnitř něj.
 
+Patří do patra mechanismů a rozepisuje dvě architektonická rozhodnutí, která
+[`architektura-vrstev.md`](architektura-vrstev.md) odbývá jedním řádkem v tabulce (AR-07
+a AR-08). Číst se dá samostatně, nic si odjinud nepůjčuje.
+
 ## Dvě osy, čtyři místa
 
 | Kde | Co v tom žije | Zdroj pravdy | Životnost |
@@ -145,3 +149,12 @@ U pilířů to stojí za zvláštní zmínku, protože je to přesně ta past, k
 Dohromady je z těch jmen mapa nejvyšší úrovně jednoho pracovního prostoru, a to je jiná
 třída než součet jejích částí. Stejný tvar nálezu je rozepsaný
 v [`pripady-pouziti/04-tenhle-balicek.md`](pripady-pouziti/04-tenhle-balicek.md).
+
+## Kam odsud dál
+
+Obě rozhodnutí, ze kterých tenhle text vychází, stojí v tabulce
+v [`architektura-vrstev.md`](architektura-vrstev.md) jako AR-07 a AR-08. Pravidlo
+o strukturních zásazích do znalostní báze je OR-05 v [`normy.md`](normy.md) a incident
+za ním [`casy/03-odpojene-databaze.md`](casy/03-odpojene-databaze.md). Proč zastarávání
+v bázi hlídá rituál a ne stroj, a co s tím,
+rozvádí [`uceni-a-zavedeni.md`](uceni-a-zavedeni.md).

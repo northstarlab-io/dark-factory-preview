@@ -7,6 +7,10 @@ na tentýž kontext a orchestrátor nemá podle čeho rozhodnout, které z nich 
 Mechanismus dělby je popsaný v [`architektura-vrstev.md`](architektura-vrstev.md), sem ho
 nepíšu podruhé; tenhle text je mapa toho, co z toho mechanismu dnes reálně stojí.
 
+Patří k big picture a čte se ve dvojici s [`CO-JE-DARK-FACTORY.md`](CO-JE-DARK-FACTORY.md):
+tam je odpověď na otázku, co ten systém je, tady na otázku, z čeho se skládá. Jak to uvnitř
+funguje, je až patro níž.
+
 **Co je tu jmenovitě a co ne.** Páteř platformy jde jménem, protože její názvy neprozrazují
 nic než samy sebe. Byznysová vrstva jde kategoriemi: část projektů nese jméno zákazníka
 nebo spolupracovníka přímo v názvu složky a seznam zákazníků je třída, která z balíčku
@@ -142,3 +146,13 @@ v jedné, se dotkne druhé a chvíli žije v obou; kdo co vlastní, se pojmenuje
 kdy se překryv projeví. Nejčastěji se to stává na dvou švech: mezi zakázkou a nasazením
 u téhož zákazníka a mezi produktem, který vznikl z klientské práce, a páteří, do které se
 postupně stěhuje.
+
+## Kam odsud dál
+
+Tahle mapa říká, co stojí. Jak to stojí, je patro níž:
+[`architektura-vrstev.md`](architektura-vrstev.md) popisuje mechanismus dělby na vrstvy
+a jednotky, [`normy.md`](normy.md) pravidla, kterými se uvnitř pracuje,
+a [`datove-vrstvy.md`](datove-vrstvy.md) to, kde datům z těch projektů bydlí zdroj pravdy.
+Jak vypadá jedna položka byznysové vrstvy na konkrétní práci, ukazují
+[`pripady-pouziti/`](pripady-pouziti/README.md). Proč tu nejsou jména a počty, je
+v [`hranice-baliku.md`](hranice-baliku.md).
